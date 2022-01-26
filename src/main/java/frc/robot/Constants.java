@@ -4,7 +4,8 @@
 
 package frc.robot;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
@@ -23,16 +24,16 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 public final class Constants {
     //Drivetrain
     public static final int[] LEFT_GROUP = {1, 3};
-    public static final int[] RIGHT_GROUP = {0, 2};
+    public static final int[] RIGHT_GROUP = {2, 4};
 
     //Motor Controller Grouups
-    public static final MotorControllerGroup LEFT_MOTOR_GROUP = new MotorControllerGroup(new WPI_TalonSRX(Constants.LEFT_GROUP[0]), 
-                                                                        new WPI_TalonSRX(Constants.LEFT_GROUP[1]));
+    public static final MotorControllerGroup LEFT_MOTOR_GROUP = new MotorControllerGroup(new CANSparkMax(Constants.LEFT_GROUP[0], MotorType.kBrushless),
+        new CANSparkMax(Constants.LEFT_GROUP[1], MotorType.kBrushless));
 
-    public static final MotorControllerGroup RIGHT_CONTROLLER_GROUP = new MotorControllerGroup(new WPI_TalonSRX(Constants.RIGHT_GROUP[0]), 
-                                                                        new WPI_TalonSRX(Constants.RIGHT_GROUP[1]));
+    public static final MotorControllerGroup RIGHT_MOTOR_GROUP = new MotorControllerGroup(new CANSparkMax(Constants.LEFT_GROUP[0], MotorType.kBrushless),
+        new CANSparkMax(Constants.LEFT_GROUP[1], MotorType.kBrushless));
                                                             
-    public static final DifferentialDrive drivetrain = new DifferentialDrive(LEFT_MOTOR_GROUP, RIGHT_CONTROLLER_GROUP);
+    public static final DifferentialDrive drivetrain = new DifferentialDrive(LEFT_MOTOR_GROUP, RIGHT_MOTOR_GROUP);
     
     //Shifting Pneumatics
     public static final Solenoid shiftSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, 0);  //Use CTREPCM for old PCM and REVPH for new pneumatics hub
