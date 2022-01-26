@@ -31,8 +31,8 @@ public class Drive extends CommandBase {
   @Override
   public void execute() {
     //Send joystick commands to the drivetrain subsystem
-    RobotContainer.drivetrain.arcadeDrive(RobotContainer.driverController.rightStick.getX(), 
-        RobotContainer.driverController.leftStick.getY()); // axes swapped due to unexpected function
+    RobotContainer.drivetrain.arcadeDrive(RobotContainer.driverController.leftStick.getY(), 
+        RobotContainer.driverController.rightStick.getX()); // axes restored to test expected function
   }
 
   // Called once the command ends or is interrupted.
