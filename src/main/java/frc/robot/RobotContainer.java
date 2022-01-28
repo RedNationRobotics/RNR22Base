@@ -37,6 +37,8 @@ public class RobotContainer {
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+    Constants.RIGHT_MOTOR_GROUP.setInverted(true);
+    
     // Configure the button bindings method call
     configureButtonBindings();
   }

@@ -22,7 +22,7 @@ public class Drivetrain extends SubsystemBase {
 
   // Drive actions
   public void arcadeDrive(double speed, double rotation){
-      drive.arcadeDrive(-speed, -rotation);
+      drive.arcadeDrive(speed, -rotation); //rotation sign changed to accomodate functional front of bot
   }
 
   public void stop(){
