@@ -30,8 +30,8 @@ public final class Constants {
     public static final MotorControllerGroup LEFT_MOTOR_GROUP = new MotorControllerGroup(new CANSparkMax(Constants.LEFT_GROUP[0], MotorType.kBrushless),
         new CANSparkMax(Constants.LEFT_GROUP[1], MotorType.kBrushless));
 
-    public static final MotorControllerGroup RIGHT_MOTOR_GROUP = new MotorControllerGroup(new CANSparkMax(Constants.LEFT_GROUP[0], MotorType.kBrushless),
-        new CANSparkMax(Constants.LEFT_GROUP[1], MotorType.kBrushless));
+    public static final MotorControllerGroup RIGHT_MOTOR_GROUP = new MotorControllerGroup(new CANSparkMax(Constants.RIGHT_GROUP[0], MotorType.kBrushless),
+        new CANSparkMax(Constants.RIGHT_GROUP[1], MotorType.kBrushless));
                                                             
     public static final DifferentialDrive drivetrain = new DifferentialDrive(LEFT_MOTOR_GROUP, RIGHT_MOTOR_GROUP);
     
