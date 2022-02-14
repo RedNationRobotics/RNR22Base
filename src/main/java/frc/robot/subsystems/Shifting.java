@@ -6,24 +6,28 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.util.sendable.SendableRegistry;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.RobotContainer;
+import frc.robot.commands.LowGear;
 
 
 public class Shifting extends SubsystemBase {
-    private Solenoid solenoid = Constants.shiftSolenoid;
+  public static Solenoid solenoid = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.kShiftSolenoid);  //Use CTREPCM for old PCM and REVPH for new pneumatics hub  
 
-    private Compressor c = Constants.compressor;
+  private Compressor c = RobotContainer.phcompressor; //up for deletion
 
   /** Constructor: Creates a new Shifting. */
   public Shifting() {
     SendableRegistry.add(solenoid, "Shift");
-    
-  c.enableDigital();
-
     //Use this to set a default command for the subsystem
-    //this.setDefaultCommand(new LowGear(this)); //commented out along with its import to determine if default command is neccessary
+    this.setDefaultCommand(new LowGear()); //commented out along with its import to determine if default command is neccessary
+    
+    c.enableDigital(); // up for deletion
+
+  
   }
 
   // Methods to control the shift solenoid
