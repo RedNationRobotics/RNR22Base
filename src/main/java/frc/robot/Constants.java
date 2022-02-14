@@ -31,6 +31,7 @@ public final class Constants {
     public static final CANSparkMax leftFollow = new CANSparkMax(Constants.LEFT_GROUP[1], MotorType.kBrushless);
     public static final CANSparkMax rightLead = new CANSparkMax(Constants.RIGHT_GROUP[0], MotorType.kBrushless);
     public static final CANSparkMax rightFollow = new CANSparkMax(Constants.RIGHT_GROUP[1], MotorType.kBrushless);
+
                                                             
     public static final DifferentialDrive drivetrain = new DifferentialDrive(leftLead, rightLead);
     
