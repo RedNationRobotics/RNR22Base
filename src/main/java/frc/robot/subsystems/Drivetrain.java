@@ -18,6 +18,13 @@ public class Drivetrain extends SubsystemBase {
     SendableRegistry.add(drive, "Drive");
     //Use this to set a default command for the subsystem
     this.setDefaultCommand(new Drive(this));
+    //Invert right
+    Constants.rightLead.setInverted(true);
+    //Setup followers
+    Constants.leftFollow.follow(Constants.leftLead);
+    Constants.rightFollow.follow(Constants.rightLead);
+    
+    
   }
 
   // Drive actions

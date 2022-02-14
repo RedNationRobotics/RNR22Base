@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
+//import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
@@ -22,18 +22,17 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-    //Drivetrain
+    //Drivetrain IDs
     public static final int[] LEFT_GROUP = {1, 3};
     public static final int[] RIGHT_GROUP = {2, 4};
 
     //Motor Controller Grouups
-    public static final MotorControllerGroup LEFT_MOTOR_GROUP = new MotorControllerGroup(new CANSparkMax(Constants.LEFT_GROUP[0], MotorType.kBrushless),
-        new CANSparkMax(Constants.LEFT_GROUP[1], MotorType.kBrushless));
-
-    public static final MotorControllerGroup RIGHT_MOTOR_GROUP = new MotorControllerGroup(new CANSparkMax(Constants.LEFT_GROUP[0], MotorType.kBrushless),
-        new CANSparkMax(Constants.LEFT_GROUP[1], MotorType.kBrushless));
+    public static final CANSparkMax leftLead = new CANSparkMax(Constants.LEFT_GROUP[0], MotorType.kBrushless);
+    public static final CANSparkMax leftFollow = new CANSparkMax(Constants.LEFT_GROUP[1], MotorType.kBrushless);
+    public static final CANSparkMax rightLead = new CANSparkMax(Constants.RIGHT_GROUP[0], MotorType.kBrushless);
+    public static final CANSparkMax rightFollow = new CANSparkMax(Constants.RIGHT_GROUP[1], MotorType.kBrushless);
                                                             
-    public static final DifferentialDrive drivetrain = new DifferentialDrive(LEFT_MOTOR_GROUP, RIGHT_MOTOR_GROUP);
+    public static final DifferentialDrive drivetrain = new DifferentialDrive(leftLead, rightLead);
     
     //Shifting Pneumatics
     public static final Solenoid shiftSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, 0);  //Use CTREPCM for old PCM and REVPH for new pneumatics hub
