@@ -9,14 +9,15 @@ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 import frc.robot.commands.LowGear;
 
 
 public class Shifting extends SubsystemBase {
   // Shifting solenoid
-  private final Solenoid m_solenoid = new Solenoid(PneumaticsModuleType.REVPH, 0);  //Use CTREPCM for old PCM and REVPH for new pneumatics hub  
+  private final Solenoid m_solenoid = new Solenoid(PneumaticsModuleType.REVPH, Constants.kShiftSolenoid);  //Use CTREPCM for old PCM and REVPH for new pneumatics hub  
   // Compressor
-  //private final Compressor m_compressor = new Compressor(1, PneumaticsModuleType.REVPH);
+  private final Compressor m_compressor = new Compressor(1, PneumaticsModuleType.REVPH);
 
   /** Constructor: Creates a new Shifting. */
   public Shifting() {
@@ -24,7 +25,7 @@ public class Shifting extends SubsystemBase {
     //Use this to set a default command for the subsystem
     this.setDefaultCommand(new LowGear(this)); //commented out along with its import to determine if default command is neccessary
     
-    //m_compressor.enableDigital(); // up for deletion
+    m_compressor.enableDigital(); // up for deletion
 
   }
 

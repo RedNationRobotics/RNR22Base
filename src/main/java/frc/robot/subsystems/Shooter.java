@@ -16,7 +16,7 @@ public class Shooter extends SubsystemBase {
   //Shooter Motors
   private final CANSparkMax m_leftMotor = new CANSparkMax(Constants.kShooterMotors[0], MotorType.kBrushless);
   private final CANSparkMax m_rightMotor = new CANSparkMax(Constants.kShooterMotors[1], MotorType.kBrushless);
-  private final Solenoid m_solenoid = new Solenoid(PneumaticsModuleType.REVPH, 1);
+  private final Solenoid m_solenoid = new Solenoid(PneumaticsModuleType.REVPH, Constants.kShootSolenoid);
   /** Constructor: Creates a new Shooter. */
   public Shooter() {
     //Sendables go here

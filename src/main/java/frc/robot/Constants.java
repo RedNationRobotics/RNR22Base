@@ -20,23 +20,11 @@ public final class Constants {
     //Shooter IDs
     public static final int[] kShooterMotors = {5, 6};
 
-<<<<<<< HEAD
-                                                            
-    public static final DifferentialDrive drivetrain = new DifferentialDrive(leftLead, rightLead);
-    
-    //Shifting Pneumatics
-    public static final Solenoid shiftSolenoid = new Solenoid(PneumaticsModuleType.REVPH, 0);  //Use CTREPCM for old PCM and REVPH for new pneumatics hub
-
-    public static final Compressor compressor = new Compressor(PneumaticsModuleType.REVPH);
-
-}
-=======
     //Pneumatics
-    public static final int kShiftSolenoid = 1;
-    public static final int kShootSolenoid = 2;
+    public static final int kShiftSolenoid = 0;
+    public static final int kShootSolenoid = 1;
 
     //Shooter Speed
     public static final double kShooterSpeed = 0.9;
    
 }
->>>>>>> origin/ShooterV2
