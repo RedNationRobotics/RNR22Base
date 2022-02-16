@@ -6,42 +6,44 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.util.sendable.SendableRegistry;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
+import frc.robot.commands.LowGear;
 
 
 public class Shifting extends SubsystemBase {
-    private Solenoid solenoid = Constants.shiftSolenoid;
-
-    private Compressor c = Constants.compressor;
+  // Shifting solenoid
+  private final Solenoid m_solenoid = new Solenoid(PneumaticsModuleType.REVPH, 0);  //Use CTREPCM for old PCM and REVPH for new pneumatics hub  
+  // Compressor
+  //private final Compressor m_compressor = new Compressor(1, PneumaticsModuleType.REVPH);
 
   /** Constructor: Creates a new Shifting. */
   public Shifting() {
-    SendableRegistry.add(solenoid, "Shift");
-    
-  c.enableDigital();
-
+    SendableRegistry.add(m_solenoid, "Shift");
     //Use this to set a default command for the subsystem
-    //this.setDefaultCommand(new LowGear(this)); //commented out along with its import to determine if default command is neccessary
+    this.setDefaultCommand(new LowGear(this)); //commented out along with its import to determine if default command is neccessary
+    
+    //m_compressor.enableDigital(); // up for deletion
+
   }
 
   // Methods to control the shift solenoid
   public void lowGear(){
-    solenoid.set(false);
+    m_solenoid.set(false);
   }
 
   public void highGear(){
-    solenoid.set(true);
+    m_solenoid.set(true);
   }
   
   public void shift(){
-    solenoid.toggle();
+    m_solenoid.toggle();
   }
   
   //gets solenoid state: true = on, false = off
   public boolean isHighGear(){
-    return solenoid.get();
+    return m_solenoid.get();
   }
 
   @Override

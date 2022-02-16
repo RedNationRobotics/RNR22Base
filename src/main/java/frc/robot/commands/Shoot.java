@@ -4,39 +4,40 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.Shifting;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.Shooter;
 
-/** LowGear command that uses an Shifting subsystem. */
-public class LowGear extends CommandBase {
+public class Shoot extends CommandBase {
    /**
-   * Creates a new Shift.
+   * Creates a new Shoot.
    *
-   * @param Shifting The subsystem used by this command.
+   * @param Shooter The subsystem used by this command.
    */
-  private final Shifting m_shifting;
 
-  public LowGear(Shifting subsystem) {
-     m_shifting = subsystem;
-     // Use addRequirements() here to declare subsystem dependencies.
-     addRequirements(m_shifting);
+  private final Shooter m_shooter;
+ 
+   /** Creates a new Shoot. */
+  public Shoot(Shooter subsystem) {
+    m_shooter = subsystem;
+    // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(m_shooter);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    m_shifting.lowGear();
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //Send joystick commands to the shifting subsystem
+    m_shooter.shoot();
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+
+  }
 
   // Returns true when the command should end.
   @Override

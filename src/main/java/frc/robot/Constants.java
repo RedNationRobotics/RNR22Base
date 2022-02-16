@@ -4,15 +4,6 @@
 
 package frc.robot;
 
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-
-import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.PneumaticsModuleType;
-import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-//import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
-
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -23,15 +14,13 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  */
 public final class Constants {
     //Drivetrain IDs
-    public static final int[] LEFT_GROUP = {1, 3};
-    public static final int[] RIGHT_GROUP = {2, 4};
+    public static final int[] kLeftDrive = {1, 3};
+    public static final int[] kRightDrive = {2, 4};
 
-    //Motor Controller Grouups
-    public static final CANSparkMax leftLead = new CANSparkMax(Constants.LEFT_GROUP[0], MotorType.kBrushless);
-    public static final CANSparkMax leftFollow = new CANSparkMax(Constants.LEFT_GROUP[1], MotorType.kBrushless);
-    public static final CANSparkMax rightLead = new CANSparkMax(Constants.RIGHT_GROUP[0], MotorType.kBrushless);
-    public static final CANSparkMax rightFollow = new CANSparkMax(Constants.RIGHT_GROUP[1], MotorType.kBrushless);
+    //Shooter IDs
+    public static final int[] kShooterMotors = {5, 6};
 
+<<<<<<< HEAD
                                                             
     public static final DifferentialDrive drivetrain = new DifferentialDrive(leftLead, rightLead);
     
@@ -41,3 +30,13 @@ public final class Constants {
     public static final Compressor compressor = new Compressor(PneumaticsModuleType.REVPH);
 
 }
+=======
+    //Pneumatics
+    public static final int kShiftSolenoid = 1;
+    public static final int kShootSolenoid = 2;
+
+    //Shooter Speed
+    public static final double kShooterSpeed = 0.9;
+   
+}
+>>>>>>> origin/ShooterV2
