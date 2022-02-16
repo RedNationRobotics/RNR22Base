@@ -21,8 +21,8 @@ public final class Constants {
     public static final int[] kShooterMotors = {5, 6};
 
     //Pneumatics
-    public static final int kShiftSolenoid = 0;
-    public static final int kShootSolenoid = 1;
+    public static final int kShiftSolenoid = 1;
+    public static final int kShootSolenoid = 2;
 
     //Shooter Speed
     public static final double kShooterSpeed = 0.9;

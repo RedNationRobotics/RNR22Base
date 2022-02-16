@@ -4,27 +4,28 @@
 
 package frc.robot.commands;
 
-import frc.robot.RobotContainer;
+import frc.robot.subsystems.Shifting;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-/** Shift command that uses an Shifting subsystem. */
+/** HighGear command that uses an Shifting subsystem. */
 public class HighGear extends CommandBase {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-    /**
-   * Creates a new Shift.
+   /**
+   * Creates a new HighGear.
    *
    * @param Shifting The subsystem used by this command.
    */
-
-  public HighGear() {
+  private final Shifting m_shifting;
+  
+  public HighGear(Shifting subsystem) {
+    m_shifting = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.shifting);
+    addRequirements(m_shifting);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    RobotContainer.shifting.highGear();
+    m_shifting.highGear();
   }
 
   // Called every time the scheduler runs while the command is scheduled.

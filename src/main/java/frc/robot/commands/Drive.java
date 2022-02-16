@@ -16,11 +16,11 @@ public class Drive extends CommandBase {
    *
    * @param Drivetrain The subsystem used by this command.
    */
-  Drivetrain m_drivetrain;
+  private final Drivetrain m_drivetrain; //this protects the subsystem from becoming a global variable
   public Drive(Drivetrain drivetrain) {
     m_drivetrain = drivetrain;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(drivetrain);
+    addRequirements(m_drivetrain);
   }
 
   // Called when the command is initially scheduled.
@@ -31,7 +31,7 @@ public class Drive extends CommandBase {
   @Override
   public void execute() {
     //Send joystick commands to the drivetrain subsystem
-    RobotContainer.drivetrain.arcadeDrive(RobotContainer.driverController.leftStick.getY(), 
+    m_drivetrain.arcadeDrive(RobotContainer.driverController.leftStick.getY(), 
         RobotContainer.driverController.rightStick.getX()); // axes restored to test expected function
   }
 

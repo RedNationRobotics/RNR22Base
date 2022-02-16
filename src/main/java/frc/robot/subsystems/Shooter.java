@@ -14,11 +14,10 @@ import frc.robot.Constants;
 
 public class Shooter extends SubsystemBase {
   //Shooter Motors
-  public static final CANSparkMax leftMotor = new CANSparkMax(Constants.kShooterMotors[0], MotorType.kBrushless);
-  public static final CANSparkMax rightMotor = new CANSparkMax(Constants.kShooterMotors[1], MotorType.kBrushless);
-  public static final Solenoid solenoidPH = new Solenoid(PneumaticsModuleType.REVPH, Constants.kShiftSolenoid);
-
-  /** Creates a new Shooter. */
+  private final CANSparkMax m_leftMotor = new CANSparkMax(Constants.kShooterMotors[0], MotorType.kBrushless);
+  private final CANSparkMax m_rightMotor = new CANSparkMax(Constants.kShooterMotors[1], MotorType.kBrushless);
+  private final Solenoid m_solenoid = new Solenoid(PneumaticsModuleType.REVPH, 1);
+  /** Constructor: Creates a new Shooter. */
   public Shooter() {
     //Sendables go here
     
@@ -26,14 +25,14 @@ public class Shooter extends SubsystemBase {
     //this.setDefaultCommand(StopShooter(this));
     
     // Invert right
-    rightMotor.setInverted(true);
+    m_rightMotor.setInverted(true);
    
   }
 
   // Methods to control shooter speed
   public void set(double speed){
-     leftMotor.set(speed);
-     rightMotor.set(speed);
+     m_leftMotor.set(speed);
+     m_rightMotor.set(speed);
   }
 
   public void shoot(){
@@ -41,17 +40,17 @@ public class Shooter extends SubsystemBase {
   }
 
   public void stop(){
-      leftMotor.stopMotor();
-      rightMotor.stopMotor();
+      m_leftMotor.stopMotor();
+      m_rightMotor.stopMotor();
   }
 
   // Methods to control the solenoid
   public void fire() {
-    solenoidPH.set(true);
+    m_solenoid.set(true);
   }
 
   public void load() {
-    solenoidPH.set(false);
+    m_solenoid.set(false);
   }
 
   @Override
