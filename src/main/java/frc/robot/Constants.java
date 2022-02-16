@@ -36,8 +36,8 @@ public final class Constants {
     public static final DifferentialDrive drivetrain = new DifferentialDrive(leftLead, rightLead);
     
     //Shifting Pneumatics
-    public static final Solenoid shiftSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, 0);  //Use CTREPCM for old PCM and REVPH for new pneumatics hub
+    public static final Solenoid shiftSolenoid = new Solenoid(PneumaticsModuleType.REVPH, 0);  //Use CTREPCM for old PCM and REVPH for new pneumatics hub
 
-    public static final Compressor compressor = new Compressor(PneumaticsModuleType.CTREPCM);
+    public static final Compressor compressor = new Compressor(PneumaticsModuleType.REVPH);
 
 }
