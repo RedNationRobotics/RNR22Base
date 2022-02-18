@@ -20,11 +20,28 @@ public final class Constants {
     //Shooter IDs
     public static final int[] kShooterMotors = {5, 6};
 
+    //Inatke IDs
+    public static final int[] kIntakeMotor = {7};
+
+    //Convey IDs
+    public static final int[] kConveyMotor = {8};
+
+
+
     //Pneumatics
     public static final int kShiftSolenoid = 0;
     public static final int kShootSolenoid = 1;
+    public static final int kIntakeSolenoid = 2;
 
     //Shooter Speed
     public static final double kShooterSpeed = 0.9;
+
+    //Intake Speed
+    public static final double kIntakeSpeed = 0.9;
+
+    //Convey Speed
+    public static final double kConveySpeed = 0.9;
+
+
    
 }
