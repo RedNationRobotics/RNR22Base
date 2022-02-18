@@ -15,6 +15,7 @@ import frc.robot.commands.HighGear;
 import frc.robot.commands.LowGear;
 import frc.robot.commands.ToggleGear;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shifting;
 import frc.robot.subsystems.Shooter;
 
@@ -36,6 +37,7 @@ public class RobotContainer {
   private final Drivetrain m_drivetrain = new Drivetrain();
   private final Shifting m_shifting = new Shifting();
   private final Shooter m_shooter = new Shooter();
+  private final Intake m_intake = new Intake();
 
   // The robot's commands are defined here...
   private final HighGear m_highGear = new HighGear(m_shifting);
