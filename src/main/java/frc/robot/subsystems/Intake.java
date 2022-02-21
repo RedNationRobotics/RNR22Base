@@ -4,15 +4,19 @@
 
 package frc.robot.subsystems;
 
+import java.util.Set;
+
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class Intake extends SubsystemBase {
+public class Intake extends SubsystemBase implements Command {
   //Intake Motors
   private final CANSparkMax m_IntakeMotor = new CANSparkMax(Constants.kIntakeMotor[0], MotorType.kBrushless);
   private final Solenoid m_solenoid = new Solenoid(PneumaticsModuleType.REVPH, Constants.kIntakeSolenoid);
@@ -56,5 +60,11 @@ public class Intake extends SubsystemBase {
   @Override
   public void simulationPeriodic() {
     // This method will be called once per scheduler run during simulation
+  }
+
+  @Override
+  public Set<Subsystem> getRequirements() {
+    // TODO Auto-generated method stub
+    return null;
   }
 }

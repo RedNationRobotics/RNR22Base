@@ -10,10 +10,12 @@ import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.lib.controllers.RNRXboxController;
+import frc.robot.commands.Conveyance;
 import frc.robot.commands.Drive;
 import frc.robot.commands.HighGear;
 import frc.robot.commands.LowGear;
 import frc.robot.commands.ToggleGear;
+import frc.robot.subsystems.Convey;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shifting;
@@ -38,6 +40,9 @@ public class RobotContainer {
   private final Shifting m_shifting = new Shifting();
   private final Shooter m_shooter = new Shooter();
   private final Intake m_intake = new Intake();
+  private final Convey m_convey = new Convey();
+
+
 
   // The robot's commands are defined here...
   private final HighGear m_highGear = new HighGear(m_shifting);
@@ -64,6 +69,15 @@ public class RobotContainer {
     driverController.leftBumper.whenPressed(m_lowGear);
     driverController.rightBumper.whenPressed(m_highGear);
     driverController.yButton.whenPressed(m_toggleGear);
+
+    operatorController.aButton.whenHeld(m_shooter);
+    operatorController.bButton.whenHeld(m_intake);
+    operatorController.xButton.whileHeld(m_convey);
+
+
+
+
+    
     
   }
 

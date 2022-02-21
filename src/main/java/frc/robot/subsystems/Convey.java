@@ -9,53 +9,39 @@ import java.util.Set;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-import edu.wpi.first.wpilibj.PneumaticsModuleType;
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class Shooter extends SubsystemBase implements Command {
-  //Shooter Motors
-  private final CANSparkMax m_leftMotor = new CANSparkMax(Constants.kShooterMotors[0], MotorType.kBrushless);
-  private final CANSparkMax m_rightMotor = new CANSparkMax(Constants.kShooterMotors[1], MotorType.kBrushless);
-  private final Solenoid m_solenoid = new Solenoid(PneumaticsModuleType.REVPH, Constants.kShootSolenoid);
-  /** Constructor: Creates a new Shooter. */
-  public Shooter() {
+public class Convey extends SubsystemBase implements Command {
+  //Convey Motors
+  private final CANSparkMax m_convey = new CANSparkMax(Constants.kConveyMotor[0], MotorType.kBrushless);
+  /** Constructor: Creates a new Intake. */
+  public Convey() {
     //Sendables go here
     
     // Default Command
-    //this.setDefaultCommand(StopShooter(this));
-    
-    // Invert right
-    m_rightMotor.setInverted(true);
+    //this.setDefaultCommand(StopConvey(this));
+  
    
   }
 
-  // Methods to control shooter speed
+  // Methods to control Convey  speed
   public void set(double speed){
-     m_leftMotor.set(speed);
-     m_rightMotor.set(speed);
+    m_convey.set(speed);
   }
 
-  public void shoot(){
-    set(Constants.kShooterSpeed);
+  public void Convey(){
+    set(Constants.kConveySpeed);
   }
 
   public void stop(){
-      m_leftMotor.stopMotor();
-      m_rightMotor.stopMotor();
+    m_convey.stopMotor();
   }
 
   // Methods to control the solenoid
-  public void fire() {
-    m_solenoid.set(true);
-  }
 
-  public void load() {
-    m_solenoid.set(false);
-  }
 
   @Override
   public void periodic() {
