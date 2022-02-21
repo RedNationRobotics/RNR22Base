@@ -9,41 +9,47 @@ import java.util.Set;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import frc.robot.commands.StopShooter;
 
-public class Shooter extends SubsystemBase implements Command {
-  //Shooter Motors
-  private final CANSparkMax m_leftMotor = new CANSparkMax(Constants.kShooterMotors[0], MotorType.kBrushless);
-  private final CANSparkMax m_rightMotor = new CANSparkMax(Constants.kShooterMotors[1], MotorType.kBrushless);
-    /** Constructor: Creates a new Shooter. */
-  public Shooter() {
+public class Intake extends SubsystemBase implements Command {
+  //Intake Motors
+  private final CANSparkMax m_IntakeMotor = new CANSparkMax(Constants.kIntakeMotor[0], MotorType.kBrushless);
+  private final Solenoid m_solenoid = new Solenoid(PneumaticsModuleType.REVPH, Constants.kIntakeSolenoid);
+  /** Constructor: Creates a new Intake. */
+  public Intake() {
     //Sendables go here
     
     // Default Command
-    this.setDefaultCommand(new StopShooter(this));
-    
-    // Invert right
-    m_rightMotor.setInverted(true);
+    //this.setDefaultCommand(StopIntake(this));
+  
    
   }
 
-  // Methods to control shooter speed
+  // Methods to control Intake  speed
   public void set(double speed){
-     m_leftMotor.set(speed);
-     m_rightMotor.set(speed);
+     m_IntakeMotor.set(speed);
   }
 
-  public void shoot(){
-    set(Constants.kShooterSpeed);
+  public void intake(){
+    set(Constants.kIntakeSpeed);
   }
 
   public void stop(){
-      m_leftMotor.stopMotor();
-      m_rightMotor.stopMotor();
+      m_IntakeMotor.stopMotor();
+  }
+
+  // Methods to control the solenoid
+  public void down() {
+    m_solenoid.set(true);
+  }
+
+  public void retract() {
+    m_solenoid.set(false);
   }
 
   @Override

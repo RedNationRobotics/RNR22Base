@@ -7,9 +7,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Shooter;
 
-public class Shoot extends CommandBase {
+public class RunShooter extends CommandBase {
    /**
-   * Creates a new Shoot.
+   * Creates a new RunShooter.
    *
    * @param Shooter The subsystem used by this command.
    */
@@ -17,7 +17,7 @@ public class Shoot extends CommandBase {
   private final Shooter m_shooter;
  
    /** Creates a new Shoot. */
-  public Shoot(Shooter subsystem) {
+  public RunShooter(Shooter subsystem) {
     m_shooter = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_shooter);
@@ -36,12 +36,12 @@ public class Shoot extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-
+    m_shooter.stop();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }
