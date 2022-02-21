@@ -5,43 +5,43 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Convey;
+import frc.robot.subsystems.Bolt;
 
-public class Conveyance extends CommandBase {
+public class Fire extends CommandBase {
    /**
-   * Creates a new Intake.
+   * Creates a new Shoot.
    *
-   * @param Intake The subsystem used by this command.
+   * @param Shooter The subsystem used by this command.
    */
 
-  private final Convey m_convey ;
+  private final Bolt m_bolt;
  
-   /** Creates a new Intake. */
-  public Conveyance(Convey subsystem) {
-    m_convey = subsystem;
+   /** Creates a new Shoot. */
+  public Fire(Bolt subsystem) {
+    m_bolt = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(m_convey);
+    addRequirements(m_bolt);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    m_bolt.fire();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-    m_convey.Convey();
-  }
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-
+    m_bolt.load();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }

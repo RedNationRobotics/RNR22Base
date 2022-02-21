@@ -9,24 +9,22 @@ import java.util.Set;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-import edu.wpi.first.wpilibj.PneumaticsModuleType;
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.commands.StopShooter;
 
 public class Shooter extends SubsystemBase implements Command {
   //Shooter Motors
   private final CANSparkMax m_leftMotor = new CANSparkMax(Constants.kShooterMotors[0], MotorType.kBrushless);
   private final CANSparkMax m_rightMotor = new CANSparkMax(Constants.kShooterMotors[1], MotorType.kBrushless);
-  private final Solenoid m_solenoid = new Solenoid(PneumaticsModuleType.REVPH, Constants.kShootSolenoid);
-  /** Constructor: Creates a new Shooter. */
+    /** Constructor: Creates a new Shooter. */
   public Shooter() {
     //Sendables go here
     
     // Default Command
-    //this.setDefaultCommand(StopShooter(this));
+    this.setDefaultCommand(new StopShooter(this));
     
     // Invert right
     m_rightMotor.setInverted(true);
@@ -46,15 +44,6 @@ public class Shooter extends SubsystemBase implements Command {
   public void stop(){
       m_leftMotor.stopMotor();
       m_rightMotor.stopMotor();
-  }
-
-  // Methods to control the solenoid
-  public void fire() {
-    m_solenoid.set(true);
-  }
-
-  public void load() {
-    m_solenoid.set(false);
   }
 
   @Override
