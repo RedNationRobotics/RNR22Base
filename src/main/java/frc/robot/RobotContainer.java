@@ -36,11 +36,13 @@ public class RobotContainer {
 
   // The robot's subsystems are defined here...
   //private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-  private final Drivetrain m_drivetrain = new Drivetrain();
-  private final Shifting m_shifting = new Shifting();
-  private final Shooter m_shooter = new Shooter();
-  private final Intake m_intake = new Intake();
-  private final Conveyor m_convey = new Conveyor();
+   private final Drivetrain m_drivetrain = new Drivetrain();
+   private final Conveyor m_convey = new Conveyor();
+   private final Intake m_intake = new Intake(); 
+   private final Shifting m_shifting = new Shifting();
+   private final Shooter m_shooter = new Shooter();
+  
+  
 
 
 
