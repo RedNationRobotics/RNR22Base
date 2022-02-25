@@ -12,6 +12,11 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.lib.controllers.RNRXboxController;
 import frc.robot.commands.RunConveyor;
 import frc.robot.commands.Drive;
+import frc.robot.commands.StopConveyor;
+import frc.robot.commands.RunShooter;
+import frc.robot.commands.StopShooter;
+import frc.robot.commands.RunIntake;
+import frc.robot.commands.StopIntake;
 import frc.robot.commands.HighGear;
 import frc.robot.commands.LowGear;
 import frc.robot.commands.ToggleGear;
@@ -47,9 +52,15 @@ public class RobotContainer {
 
 
   // The robot's commands are defined here...
+  private final RunConveyor m_runconveyor = new RunConveyor(m_convey);
+  private final StopConveyor m_stopconveyor = new StopConveyor(m_convey);
+  private final RunIntake m_runintake = new RunIntake(m_intake);
+  private final StopIntake m_stopintake = new StopIntake(m_intake);
   private final HighGear m_highGear = new HighGear(m_shifting);
   private final LowGear m_lowGear = new LowGear(m_shifting);
   private final ToggleGear m_toggleGear = new ToggleGear(m_shifting);
+  private final RunShooter m_runshooter = new RunShooter(m_shooter);
+  private final StopShooter m_stopshooter = new StopShooter(m_shooter);
 
   //private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
     private final Drive m_autoCommand = new Drive(m_drivetrain);
