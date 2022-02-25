@@ -11,12 +11,12 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.lib.controllers.RNRXboxController;
 import frc.robot.commands.RunConveyor;
-import frc.robot.commands.Drive;
-import frc.robot.commands.StopConveyor;
-import frc.robot.commands.RunShooter;
-import frc.robot.commands.StopShooter;
 import frc.robot.commands.RunIntake;
+import frc.robot.commands.RunShooter;
+import frc.robot.commands.StopConveyor;
 import frc.robot.commands.StopIntake;
+import frc.robot.commands.StopShooter;
+import frc.robot.commands.Drive;
 import frc.robot.commands.HighGear;
 import frc.robot.commands.LowGear;
 import frc.robot.commands.ToggleGear;
@@ -41,26 +41,23 @@ public class RobotContainer {
 
   // The robot's subsystems are defined here...
   //private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-   private final Drivetrain m_drivetrain = new Drivetrain();
-   private final Conveyor m_convey = new Conveyor();
-   private final Intake m_intake = new Intake(); 
-   private final Shifting m_shifting = new Shifting();
-   private final Shooter m_shooter = new Shooter();
+  private final Conveyor m_conveyor = new Conveyor();
+  private final Drivetrain m_drivetrain = new Drivetrain();
+  private final Intake m_intake = new Intake(); 
+  private final Shifting m_shifting = new Shifting();
+  private final Shooter m_shooter = new Shooter();
   
-  
-
-
-
-  // The robot's commands are defined here...
-  private final RunConveyor m_runconveyor = new RunConveyor(m_convey);
-  private final StopConveyor m_stopconveyor = new StopConveyor(m_convey);
-  private final RunIntake m_runintake = new RunIntake(m_intake);
-  private final StopIntake m_stopintake = new StopIntake(m_intake);
+    // The robot's commands are defined here...
+ 
   private final HighGear m_highGear = new HighGear(m_shifting);
   private final LowGear m_lowGear = new LowGear(m_shifting);
+  private final RunConveyor m_runConveyor = new RunConveyor(m_conveyor);
+  private final RunIntake m_runIntake = new RunIntake(m_intake);
+  private final RunShooter m_runShooter = new RunShooter(m_shooter);
+  private final StopConveyor m_stopConveyor = new StopConveyor(m_conveyor);
+  private final StopIntake m_stopIntake = new StopIntake(m_intake);
+  private final StopShooter m_stopShooter = new StopShooter(m_shooter);
   private final ToggleGear m_toggleGear = new ToggleGear(m_shifting);
-  private final RunShooter m_runshooter = new RunShooter(m_shooter);
-  private final StopShooter m_stopshooter = new StopShooter(m_shooter);
 
   //private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
     private final Drive m_autoCommand = new Drive(m_drivetrain);
@@ -84,9 +81,9 @@ public class RobotContainer {
     driverController.rightBumper.whenPressed(m_highGear);
     driverController.yButton.whenPressed(m_toggleGear);
 
-    //operatorController.aButton.whenHeld(m_shooter);
-    //operatorController.bButton.whenHeld(m_intake);
-    //operatorController.xButton.whileHeld(m_convey);
+    operatorController.aButton.whenHeld(m_runShooter);
+    operatorController.bButton.whenHeld(m_runIntake);
+    operatorController.xButton.whileHeld(m_runConveyor);
 
   }
 
