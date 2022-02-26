@@ -93,7 +93,7 @@ public class RobotContainer {
     operatorController.aButton.whenHeld(m_runShooter);
     operatorController.bButton.whenHeld(m_runIntake);
     operatorController.xButton.whileHeld(m_runConveyor);
-    operatorController.yButton.whenPressed(m_fire);
+    operatorController.yButton.whileHeld(m_fire);
     
 
   }

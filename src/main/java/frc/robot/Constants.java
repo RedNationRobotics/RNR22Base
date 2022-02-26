@@ -30,14 +30,14 @@ public final class Constants {
 
     //Pneumatics
     public static final int kShiftSolenoid = 2;
-    public static final int kShootSolenoid = 0;
+    public static final int kShootSolenoid = 3;
     public static final int kIntakeSolenoid = 1;
-    public static final int kClimbSolenoid = 3;
+    public static final int kClimbSolenoid = 0;
     //Shooter Speed
     public static final double kShooterSpeed = 0.9;
 
     //Intake Speed
-    public static final double kIntakeSpeed = 0.9;
+    public static final double kIntakeSpeed = 0.5;
 
     //Convey Speed
     public static final double kConveySpeed = 0.9;

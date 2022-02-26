@@ -9,14 +9,14 @@ import frc.robot.subsystems.Bolt;
 
 public class Fire extends CommandBase {
    /**
-   * Creates a new Shoot.
+   * Creates a new Bolt.
    *
-   * @param Shooter The subsystem used by this command.
+   * @param Bolt The subsystem used by this command.
    */
 
   private final Bolt m_bolt;
  
-   /** Creates a new Shoot. */
+   /** Creates a new Fire */
   public Fire(Bolt subsystem) {
     m_bolt = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
@@ -31,7 +31,9 @@ public class Fire extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+  
+  }
 
   // Called once the command ends or is interrupted.
   @Override
