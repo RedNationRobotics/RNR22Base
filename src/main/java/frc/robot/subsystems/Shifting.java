@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import frc.robot.commands.LowGear;
+//import frc.robot.commands.LowGear;
 
 
 public class Shifting extends SubsystemBase {
@@ -23,7 +23,7 @@ public class Shifting extends SubsystemBase {
   public Shifting() {
     SendableRegistry.add(m_solenoid, "Shift");
     //Use this to set a default command for the subsystem
-    this.setDefaultCommand(new LowGear(this)); //commented out along with its import to determine if default command is neccessary
+    //this.setDefaultCommand(new LowGear(this)); //commented out along with its import to determine if default command is neccessary
     
     m_compressor.enableDigital(); // up for deletion
 

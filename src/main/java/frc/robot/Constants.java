@@ -32,7 +32,7 @@ public final class Constants {
     public static final int kShiftSolenoid = 2;
     public static final int kShootSolenoid = 0;
     public static final int kIntakeSolenoid = 1;
-
+    public static final int kClimbSolenoid = 3;
     //Shooter Speed
     public static final double kShooterSpeed = 0.9;
 

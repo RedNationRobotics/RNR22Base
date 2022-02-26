@@ -25,13 +25,14 @@ public class ToggleGear extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_shifting.shift();;
+    
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     //Send joystick commands to the shifting subsystem
+    m_shifting.shift();
   }
 
   // Called once the command ends or is interrupted.

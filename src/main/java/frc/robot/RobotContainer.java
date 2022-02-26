@@ -17,9 +17,11 @@ import frc.robot.commands.StopConveyor;
 import frc.robot.commands.StopIntake;
 import frc.robot.commands.StopShooter;
 import frc.robot.commands.Drive;
+import frc.robot.commands.Fire;
 import frc.robot.commands.HighGear;
 import frc.robot.commands.LowGear;
 import frc.robot.commands.ToggleGear;
+import frc.robot.subsystems.Bolt;
 import frc.robot.subsystems.Conveyor;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Intake;
@@ -41,6 +43,7 @@ public class RobotContainer {
 
   // The robot's subsystems are defined here...
   //private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
+  private final Bolt m_bolt = new Bolt();
   private final Conveyor m_conveyor = new Conveyor();
   private final Drivetrain m_drivetrain = new Drivetrain();
   private final Intake m_intake = new Intake(); 
@@ -49,6 +52,7 @@ public class RobotContainer {
   
     // The robot's commands are defined here...
  
+  private final Fire m_fire = new Fire(m_bolt);
   private final HighGear m_highGear = new HighGear(m_shifting);
   private final LowGear m_lowGear = new LowGear(m_shifting);
   private final RunConveyor m_runConveyor = new RunConveyor(m_conveyor);
@@ -67,6 +71,11 @@ public class RobotContainer {
    
     // Configure the button bindings method call
     configureButtonBindings();
+    
+  }
+
+  public void update() {
+    System.out.println(m_shifting.isHighGear()); //use this to print to console for debug
   }
 
   /**
@@ -84,6 +93,8 @@ public class RobotContainer {
     operatorController.aButton.whenHeld(m_runShooter);
     operatorController.bButton.whenHeld(m_runIntake);
     operatorController.xButton.whileHeld(m_runConveyor);
+    operatorController.yButton.whenPressed(m_fire);
+    
 
   }
 

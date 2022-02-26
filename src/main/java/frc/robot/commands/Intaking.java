@@ -9,7 +9,7 @@ import frc.robot.subsystems.Intake;
 
 public class Intaking extends CommandBase {
    /**
-   * Creates a new Intake.
+   * Creates a new Intaking.
    *
    * @param Intake The subsystem used by this command.
    */
@@ -36,7 +36,7 @@ public class Intaking extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-
+    m_intake.stop();
   }
 
   // Returns true when the command should end.
