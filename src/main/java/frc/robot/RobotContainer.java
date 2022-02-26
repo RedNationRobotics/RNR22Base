@@ -16,17 +16,22 @@ import frc.robot.commands.RunShooter;
 import frc.robot.commands.StopConveyor;
 import frc.robot.commands.StopIntake;
 import frc.robot.commands.StopShooter;
+import frc.robot.commands.ClimbTilt;
+import frc.robot.commands.Deploy;
 import frc.robot.commands.Drive;
 import frc.robot.commands.Fire;
 import frc.robot.commands.HighGear;
 import frc.robot.commands.LowGear;
 import frc.robot.commands.ToggleGear;
+import frc.robot.commands.Wench;
 import frc.robot.subsystems.Bolt;
+import frc.robot.subsystems.Climb;
 import frc.robot.subsystems.Conveyor;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shifting;
 import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.Tilt;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -49,6 +54,9 @@ public class RobotContainer {
   private final Intake m_intake = new Intake(); 
   private final Shifting m_shifting = new Shifting();
   private final Shooter m_shooter = new Shooter();
+  private final Climb m_climb = new Climb();
+  private final Tilt m_tilt = new Tilt();
+
   
     // The robot's commands are defined here...
  
@@ -62,6 +70,13 @@ public class RobotContainer {
   private final StopIntake m_stopIntake = new StopIntake(m_intake);
   private final StopShooter m_stopShooter = new StopShooter(m_shooter);
   private final ToggleGear m_toggleGear = new ToggleGear(m_shifting);
+  private final Wench m_wench = new Wench(m_climb);
+  private final Deploy m_depoly = new Deploy(m_climb);
+  private final ClimbTilt m_climbtilt = new ClimbTilt(m_tilt);
+
+
+
+
 
   //private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
     private final Drive m_autoCommand = new Drive(m_drivetrain);
@@ -89,11 +104,19 @@ public class RobotContainer {
     driverController.leftBumper.whenPressed(m_lowGear);
     driverController.rightBumper.whenPressed(m_highGear);
     driverController.yButton.whenPressed(m_toggleGear);
+    driverController.aButton.whenPressed(m_climbtilt);
+
 
     operatorController.aButton.whenHeld(m_runShooter);
     operatorController.bButton.whenHeld(m_runIntake);
     operatorController.xButton.whileHeld(m_runConveyor);
     operatorController.yButton.whileHeld(m_fire);
+    operatorController.leftBumper.whenHeld(m_depoly);
+    operatorController.rightBumper.whenHeld(m_wench);
+
+
+
+
     
 
   }

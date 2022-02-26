@@ -26,13 +26,16 @@ public final class Constants {
     //Convey IDs
     public static final int[] kConveyMotor = {8};
 
+    //Climb IDs
+    public static final int[] kClimbMotors = {9, 10};
+
 
 
     //Pneumatics
     public static final int kShiftSolenoid = 2;
     public static final int kShootSolenoid = 3;
     public static final int kIntakeSolenoid = 1;
-    public static final int kClimbSolenoid = 0;
+    public static final int kTiltSolenoid = 0;
     //Shooter Speed
     public static final double kShooterSpeed = 0.9;
 
@@ -41,6 +44,10 @@ public final class Constants {
 
     //Convey Speed
     public static final double kConveySpeed = 0.9;
+
+    //Climb Speed
+    public static final double kClimbSpeed = 0.2;
+
 
 
    
