@@ -21,8 +21,8 @@ public class Climb extends SubsystemBase {
     // Default Command
     //this.setDefaultCommand(new StopClimb(this));
     
-    // Invert right
-    //m_rightMotor.setInverted(true);
+    //Invert right
+    m_rightMotor.setInverted(true);
   
   }
 
@@ -33,13 +33,13 @@ public class Climb extends SubsystemBase {
   }
 
   public void wench(){
-    m_leftMotor.set(Constants.kClimbSpeed);
-    m_rightMotor.set(Constants.kClimbSpeed);
+    m_leftMotor.set(Constants.kWenchSpeed);
+    m_rightMotor.set(Constants.kWenchSpeed);
   }
 
   public void deploy(){
-    m_leftMotor.set(-Constants.kClimbSpeed);
-    m_rightMotor.set(-Constants.kClimbSpeed);
+    m_leftMotor.set(-Constants.kDeploySpeed);
+    m_rightMotor.set(-Constants.kDeploySpeed);
   }
 
 

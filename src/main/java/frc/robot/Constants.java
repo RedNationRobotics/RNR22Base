@@ -46,7 +46,9 @@ public final class Constants {
     public static final double kConveySpeed = 0.9;
 
     //Climb Speed
-    public static final double kClimbSpeed = 0.2;
+    public static final double kDeploySpeed = 0.2;
+    public static final double kWenchSpeed = 0.2;
+
 
 
 
