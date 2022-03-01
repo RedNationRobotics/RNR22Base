@@ -106,18 +106,12 @@ public class RobotContainer {
     driverController.yButton.whenPressed(m_toggleGear);
     driverController.aButton.whenPressed(m_climbtilt);
 
-
     operatorController.aButton.whenHeld(m_runShooter);
     operatorController.bButton.whenHeld(m_runIntake);
     operatorController.xButton.whileHeld(m_runConveyor);
     operatorController.yButton.whileHeld(m_fire);
     operatorController.leftBumper.whenHeld(m_depoly);
-    operatorController.rightBumper.whenHeld(m_wench);
-
-
-
-
-    
+    operatorController.rightBumper.whenHeld(m_wench);   
 
   }
 
