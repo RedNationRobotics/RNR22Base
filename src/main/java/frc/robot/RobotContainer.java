@@ -104,7 +104,7 @@ public class RobotContainer {
     driverController.leftBumper.whenPressed(m_lowGear);
     driverController.rightBumper.whenPressed(m_highGear);
     driverController.yButton.whenPressed(m_toggleGear);
-    driverController.aButton.whenPressed(m_climbtilt);
+    driverController.aButton.whileHeld(m_climbtilt);
 
     operatorController.aButton.whenHeld(m_runShooter);
     operatorController.bButton.whenHeld(m_runIntake);

@@ -11,7 +11,7 @@ public class ClimbTilt extends CommandBase {
    /**
    * Creates a new Bolt.
    *
-   * @param Bolt The subsystem used by this command.
+   * @param Tilt The subsystem used by this command.
    */
 
   private final Tilt m_tilt;
