@@ -48,11 +48,4 @@ public class Conveyor extends SubsystemBase /*implements Command*/{
   public void simulationPeriodic() {
     // This method will be called once per scheduler run during simulation
   }
-  /** Functionality unclear - check before uncommenting
-  @Override
-  public Set<Subsystem> getRequirements() {
-    // TODO Auto-generated method stub
-    return null;
-  }
-  */
 }
