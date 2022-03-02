@@ -36,6 +36,11 @@ public final class Constants {
     public static final int kShootSolenoid = 3;
     public static final int kIntakeSolenoid = 1;
     public static final int kTiltSolenoid = 0;
+
+    public static final int kph_ID = 1;
+    public static final double kMin_PSI = 100.0;
+    public static final double kMax_PSI = 120.0;
+
     //Shooter Speed
     public static final double kShooterSpeed = 0.9;
 

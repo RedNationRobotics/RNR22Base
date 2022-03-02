@@ -6,6 +6,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.PneumaticHub;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -16,6 +17,7 @@ import frc.robot.commands.RunShooter;
 import frc.robot.commands.StopConveyor;
 import frc.robot.commands.StopIntake;
 import frc.robot.commands.StopShooter;
+import frc.robot.commands.ToggleCompressor;
 import frc.robot.commands.ClimbTilt;
 import frc.robot.commands.Deploy;
 import frc.robot.commands.Drive;
@@ -29,6 +31,7 @@ import frc.robot.subsystems.Climb;
 import frc.robot.subsystems.Conveyor;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.PHub;
 import frc.robot.subsystems.Shifting;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Tilt;
@@ -51,7 +54,8 @@ public class RobotContainer {
   private final Bolt m_bolt = new Bolt();
   private final Conveyor m_conveyor = new Conveyor();
   private final Drivetrain m_drivetrain = new Drivetrain();
-  private final Intake m_intake = new Intake(); 
+  private final Intake m_intake = new Intake();
+  private final PHub m_PHub = new PHub();
   private final Shifting m_shifting = new Shifting();
   private final Shooter m_shooter = new Shooter();
   private final Climb m_climb = new Climb();
@@ -69,6 +73,7 @@ public class RobotContainer {
   private final StopConveyor m_stopConveyor = new StopConveyor(m_conveyor);
   private final StopIntake m_stopIntake = new StopIntake(m_intake);
   private final StopShooter m_stopShooter = new StopShooter(m_shooter);
+  private final ToggleCompressor m_toggleCompressor = new ToggleCompressor(m_PHub);
   private final ToggleGear m_toggleGear = new ToggleGear(m_shifting);
   private final Wench m_wench = new Wench(m_climb);
   private final Deploy m_depoly = new Deploy(m_climb);
@@ -86,6 +91,7 @@ public class RobotContainer {
    
     // Configure the button bindings method call
     configureButtonBindings();
+    m_PHub.DB_Enable();
     
   }
 
@@ -107,6 +113,7 @@ public class RobotContainer {
     driverController.bButton.whileHeld(m_climbtilt);
     driverController.xButton.whenHeld(m_depoly);
     driverController.aButton.whileHeld(m_wench);
+    driverController.selectButton.whenPressed(m_toggleCompressor);
 
 
 
