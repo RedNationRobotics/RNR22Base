@@ -98,8 +98,8 @@ public class RobotContainer {
     
   }
 
-  public void update() {
-    System.out.println(m_shifting.isHighGear()); //use this to print to console for debug
+  public void checkSomething() {
+    System.out.println(m_drivetrain.getLeftEncoder() + ", " + m_drivetrain.getRightEncoder()); //use this to print to console for debug
   }
 
   public void pneumaticStats() {
