@@ -15,7 +15,7 @@ package frc.robot;
 public final class Constants {
     // Auto Constants
     public static final double kAutoDriveDistanceInches = 80;
-    //public static final double kAutoBackupDistanceInches = 20;
+    public static final double kAutoRotation = 0;
     public static final double kAutoDriveSpeed = 0.5;
     
     // Drivetrain IDs

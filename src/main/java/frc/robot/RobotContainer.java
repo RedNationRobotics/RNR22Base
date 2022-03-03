@@ -21,6 +21,7 @@ import frc.robot.commands.StopConveyor;
 import frc.robot.commands.StopIntake;
 import frc.robot.commands.StopShooter;
 import frc.robot.commands.ToggleCompressor;
+import frc.robot.autoCommands.DriveForward;
 import frc.robot.commands.ClimbTilt;
 import frc.robot.commands.Deploy;
 import frc.robot.commands.Drive;
@@ -81,13 +82,14 @@ public class RobotContainer {
   private final Wench m_wench = new Wench(m_climb);
   private final Deploy m_depoly = new Deploy(m_climb);
   private final ClimbTilt m_climbtilt = new ClimbTilt(m_tilt);
+  private final DriveForward m_driveForward = new DriveForward(m_drivetrain, Constants.kAutoDriveDistanceInches);
 
 
 
 
 
   //private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-    private final Drive m_autoCommand = new Drive(m_drivetrain);
+    private final DriveForward m_autoCommand = new DriveForward(m_drivetrain, Constants.kAutoDriveDistanceInches);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {

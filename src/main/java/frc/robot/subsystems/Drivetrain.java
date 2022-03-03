@@ -59,6 +59,11 @@ public class Drivetrain extends SubsystemBase {
       m_drivetrain.arcadeDrive(speed, rotation); //rotation sign changed to accomodate functional front of bot
   }
 
+  public void setMotors(double speed, double rotation){
+    m_leftLead.set(speed);
+    m_rightLead.set(speed);
+  }
+
   public void stop(){
       m_drivetrain.stopMotor();
   }
