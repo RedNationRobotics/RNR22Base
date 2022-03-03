@@ -4,11 +4,14 @@
 
 package frc.robot;
 
+import javax.swing.text.StyleContext.SmallAttributeSet;
+
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.PneumaticHub;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.lib.controllers.RNRXboxController;
 import frc.robot.commands.RunConveyor;
@@ -44,7 +47,7 @@ import frc.robot.subsystems.Tilt;
  */ 
 @SuppressWarnings("unused")
 public class RobotContainer {
- 
+  private final PneumaticHub m_ph = new PneumaticHub(Constants.kph_ID);
   //Controllers
   public static final RNRXboxController driverController = new RNRXboxController(0);
   public static final RNRXboxController operatorController = new RNRXboxController(1);
@@ -91,12 +94,17 @@ public class RobotContainer {
    
     // Configure the button bindings method call
     configureButtonBindings();
-    m_PHub.DB_Enable();
+    m_PHub.enable();
     
   }
 
   public void update() {
     System.out.println(m_shifting.isHighGear()); //use this to print to console for debug
+  }
+
+  public void pneumaticStats() {
+    SmartDashboard.putNumber("Pressure 0", m_ph.getPressure(0));
+    SmartDashboard.putBoolean("Comp", m_ph.getCompressor());
   }
 
   /**
