@@ -41,7 +41,8 @@ public class Drivetrain extends SubsystemBase {
     this.setDefaultCommand(new Drive(this));
 
     // Invert right
-    m_rightLead.setInverted(true);
+    m_leftLead.setInverted(true);
+    m_rightLead.setInverted(false);
 
     //Setup followers
     m_leftFollow.follow(m_leftLead);
@@ -55,7 +56,7 @@ public class Drivetrain extends SubsystemBase {
 
   // Drive actions
   public void arcadeDrive(double speed, double rotation){
-      m_drivetrain.arcadeDrive(-speed, -rotation); //rotation sign changed to accomodate functional front of bot
+      m_drivetrain.arcadeDrive(speed, rotation); //rotation sign changed to accomodate functional front of bot
   }
 
   public void stop(){
