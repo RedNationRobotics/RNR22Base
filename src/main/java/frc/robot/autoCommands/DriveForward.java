@@ -34,15 +34,16 @@ public class DriveForward extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_drivetrain.stop();
+    //m_drivetrain.stop();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (m_drivetrain.getAverageEncoderDistance() >= m_distance)
+    if (m_drivetrain.getAverageEncoderDistance() > m_distance)
         return true;
-    else
+    else 
         return false;
+    
   }
 }

@@ -45,7 +45,7 @@ public class Robot extends TimedRobot {
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
     m_robotContainer.pneumaticStats();
-    m_robotContainer.checkSomething();
+    //m_robotContainer.checkSomething();
   }
 
   /** This function is called once each time the robot enters Disabled mode. */
