@@ -22,6 +22,7 @@ import frc.robot.commands.StopIntake;
 import frc.robot.commands.StopShooter;
 import frc.robot.commands.ToggleCompressor;
 import frc.robot.autoCommands.DriveForward;
+import frc.robot.autoCommands.ShootNScoot;
 import frc.robot.commands.ClimbTilt;
 import frc.robot.commands.Deploy;
 import frc.robot.commands.Drive;
@@ -83,13 +84,14 @@ public class RobotContainer {
   private final Deploy m_depoly = new Deploy(m_climb);
   private final ClimbTilt m_climbtilt = new ClimbTilt(m_tilt);
   private final DriveForward m_driveForward = new DriveForward(m_drivetrain, Constants.kAutoDriveDistanceInches);
+  private final ShootNScoot m_shootNScoot = new ShootNScoot(m_drivetrain, m_bolt, m_shooter);
 
 
 
 
 
   //private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-    private final DriveForward m_autoCommand = new DriveForward(m_drivetrain, Constants.kAutoDriveDistanceInches);
+    private final ShootNScoot m_autoCommand = new ShootNScoot(m_drivetrain, m_bolt, m_shooter);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {

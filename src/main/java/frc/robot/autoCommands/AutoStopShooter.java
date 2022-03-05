@@ -2,48 +2,48 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands;
+package frc.robot.autoCommands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Bolt;
+import frc.robot.subsystems.Shooter;
 
-public class Fire extends CommandBase {
+public class AutoStopShooter extends CommandBase {
    /**
-   * Creates a new Bolt.
+   * Creates a new Shoot.
    *
-   * @param Bolt The subsystem used by this command.
+   * @param Shooter The subsystem used by this command.
    */
 
-  private final Bolt m_bolt;
+  private final Shooter m_shooter;
  
-   /** Creates a new Fire */
-  public Fire(Bolt subsystem) {
-    m_bolt = subsystem;
+   /** Creates a new Shoot. */
+  public AutoStopShooter(Shooter subsystem) {
+    m_shooter = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(m_bolt);
+    addRequirements(m_shooter);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_bolt.fire();
+    m_shooter.stop();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //m_bolt.fire();
+    
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_bolt.load();
+
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }
