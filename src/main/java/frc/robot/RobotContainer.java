@@ -103,12 +103,14 @@ public class RobotContainer {
   }
 
   public void checkSomething() {
-    System.out.println(m_drivetrain.getLeftEncoder() + ", " + m_drivetrain.getRightEncoder()); //use this to print to console for debug
+   // System.out.println(m_drivetrain.getLeftEncoder() + ", " + m_drivetrain.getRightEncoder()); //use this to print to console for debug
   }
 
   public void pneumaticStats() {
     SmartDashboard.putNumber("Pressure 0", m_ph.getPressure(0));
     SmartDashboard.putBoolean("Comp", m_ph.getCompressor());
+    SmartDashboard.putNumber("rEncoder", m_drivetrain.getRightEncoder());
+    SmartDashboard.putNumber("lEncoder", m_drivetrain.getLeftEncoder());
   }
 
   /**
