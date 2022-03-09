@@ -23,7 +23,7 @@ public class Tilt extends SubsystemBase {
 
   // Methods to control the solenoid
   public void tilt() {
-    m_solenoid.set(true);
+    m_solenoid.toggle();
   }
 
   public void load() {

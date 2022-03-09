@@ -124,7 +124,7 @@ public class RobotContainer {
     driverController.leftBumper.whenPressed(m_lowGear);
     driverController.rightBumper.whenPressed(m_highGear);
     driverController.yButton.whenPressed(m_toggleGear);
-    driverController.bButton.whileHeld(m_climbtilt);
+    driverController.bButton.whenPressed(m_climbtilt);
     driverController.xButton.whenHeld(m_depoly);
     driverController.aButton.whileHeld(m_wench);
     driverController.selectButton.whenPressed(m_toggleCompressor);

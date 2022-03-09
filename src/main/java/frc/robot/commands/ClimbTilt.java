@@ -16,7 +16,7 @@ public class ClimbTilt extends CommandBase {
 
   private final Tilt m_tilt;
  
-   /** Creates a new Fire */
+   /** Creates a new Tilt */
   public ClimbTilt(Tilt subsystem) {
     m_tilt = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
@@ -25,25 +25,21 @@ public class ClimbTilt extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    m_tilt.tilt();
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-  
+    m_tilt.tilt();
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-    m_tilt.load();
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }
