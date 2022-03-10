@@ -14,7 +14,7 @@ package frc.robot;
  */
 public final class Constants {
     // Auto Constants
-    public static final double kAutoDriveDistanceInches = 80;
+    public static final double kAutoDriveDistanceInches = 82;
     public static final double kAutoRotation = 0;
     public static final double kAutoDriveSpeed = 0.5;
     
@@ -27,16 +27,16 @@ public final class Constants {
 
     public static final int kEncoderCPR = 42;
     public static final double kWheelDiameterInches = 5.0;
-    public static final double kFirstStage = 12/50;
-    public static final double kLowStage = 34/50;
-    public static final double kHighStage = 50/34;
-    public static final double kThirdStage = 24/60;
+    public static final double kFirstStage = 12.0/50.0;
+    public static final double kLowStage = 34.0/50.0;
+    public static final double kHighStage = 50.0/34.0;
+    public static final double kThirdStage = 24.0/60.0;
     public static final double kFinalDriveLow = kFirstStage * kLowStage * kThirdStage;
     public static final double kFinalDriveHigh = kFirstStage * kHighStage * kThirdStage;
-    public static final double kEncoderDPPLow=
-                (kWheelDiameterInches * kFinalDriveLow * Math.PI) / (double) kEncoderCPR;
-    public static final double kEncoderDPPHigh=
-                (kWheelDiameterInches * kFinalDriveHigh * Math.PI) / (double) kEncoderCPR;
+    public static final double kEncoderDPPLow = 1.0;
+                //( kWheelDiameterInches *  kFinalDriveLow *  Math.PI) / (double) kEncoderCPR;
+    public static final float kEncoderDPPHigh=
+                ((float) kWheelDiameterInches * (float) kFinalDriveHigh *  (float) Math.PI) / (float) kEncoderCPR;
 
     // Shooter IDs
     public static final int[] kShooterMotors = {5, 6};

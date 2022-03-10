@@ -31,7 +31,7 @@ public class Intake extends SubsystemBase {
   }
 
   public void intake(){
-    set(-Constants.kIntakeSpeed);
+    set(Constants.kIntakeSpeed);
   }
 
   public void stop(){

@@ -23,7 +23,7 @@ public class Shooter extends SubsystemBase {
     this.setDefaultCommand(new StopShooter(this));
     
     // Invert right
-    //m_rightMotor.setInverted(true);
+    m_rightMotor.setInverted(true);
   
   }
 

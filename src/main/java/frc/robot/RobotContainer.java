@@ -91,8 +91,9 @@ public class RobotContainer {
 
 
   //private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-    private final ShootNScoot m_autoCommand = new ShootNScoot(m_drivetrain, m_bolt, m_shooter);
-
+  private final ShootNScoot m_autoCommand = new ShootNScoot(m_drivetrain, m_bolt, m_shooter);
+  //private final DriveForward m_autoCommand = new DriveForward(m_drivetrain, Constants.kAutoDriveDistanceInches);
+  
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
    
@@ -111,6 +112,7 @@ public class RobotContainer {
     SmartDashboard.putBoolean("Comp", m_ph.getCompressor());
     SmartDashboard.putNumber("rEncoder", m_drivetrain.getRightEncoder());
     SmartDashboard.putNumber("lEncoder", m_drivetrain.getLeftEncoder());
+    SmartDashboard.putNumber("Average Distance", m_drivetrain.getAverageEncoderDistance());
   }
 
   /**

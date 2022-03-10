@@ -41,7 +41,7 @@ public class Drivetrain extends SubsystemBase {
     this.setDefaultCommand(new Drive(this));
 
     // Invert right
-    m_leftLead.setInverted(true);
+    m_leftLead.setInverted(false);
     m_rightLead.setInverted(false);
 
     //Setup followers
@@ -80,7 +80,7 @@ public class Drivetrain extends SubsystemBase {
    * @return the average of the TWO encoder readings
    */
   public double getAverageEncoderDistance() {
-    return (m_leftEncoder.getPosition() + m_rightEncoder.getPosition()) / 2.0;
+    return (getLeftEncoder() + getRightEncoder()) / 2.0;
   }
 
   /**
@@ -89,7 +89,7 @@ public class Drivetrain extends SubsystemBase {
    * @return the left drive encoder
    */
   public double getLeftEncoder() {
-    return m_leftEncoder.getPosition();
+    return -m_leftEncoder.getPosition();
   }
 
   /**
@@ -106,9 +106,11 @@ public class Drivetrain extends SubsystemBase {
    *
    * @param maxOutput the maximum output to which the drive will be constrained
    */
+  /*
   public void setMaxOutput(double maxOutput) {
     m_drivetrain.setMaxOutput(maxOutput);
   }
+  */
 
   @Override
   public void periodic() {

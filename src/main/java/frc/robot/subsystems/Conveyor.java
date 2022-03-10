@@ -29,7 +29,7 @@ public class Conveyor extends SubsystemBase /*implements Command*/{
   }
 
   public void runConveyor(){
-    set(Constants.kConveySpeed);
+    set(-Constants.kConveySpeed);
   }
 
   public void stop(){
