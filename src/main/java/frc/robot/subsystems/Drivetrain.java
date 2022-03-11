@@ -41,7 +41,7 @@ public class Drivetrain extends SubsystemBase {
     this.setDefaultCommand(new Drive(this));
 
     // Invert right
-    m_leftLead.setInverted(false);
+    m_leftLead.setInverted(true);
     m_rightLead.setInverted(false);
 
     //Setup followers
