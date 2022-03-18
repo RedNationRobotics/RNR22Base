@@ -17,6 +17,7 @@ import frc.lib.controllers.RNRXboxController;
 import frc.robot.commands.RunConveyor;
 import frc.robot.commands.RunIntake;
 import frc.robot.commands.RunShooter;
+import frc.robot.commands.SpinIntake;
 import frc.robot.commands.StopConveyor;
 import frc.robot.commands.StopIntake;
 import frc.robot.commands.StopShooter;
@@ -67,7 +68,7 @@ public class RobotContainer {
   private final Tilt m_tilt = new Tilt();
 
   
-    // The robot's commands are defined here...
+  // The robot's commands are defined here...
  
   private final Fire m_fire = new Fire(m_bolt);
   private final HighGear m_highGear = new HighGear(m_shifting);
@@ -82,12 +83,10 @@ public class RobotContainer {
   private final ToggleGear m_toggleGear = new ToggleGear(m_shifting);
   private final Wench m_wench = new Wench(m_climb);
   private final Deploy m_depoly = new Deploy(m_climb);
-  private final ClimbTilt m_climbtilt = new ClimbTilt(m_tilt);
+  private final ClimbTilt m_climbTilt = new ClimbTilt(m_tilt);
   private final DriveForward m_driveForward = new DriveForward(m_drivetrain, Constants.kAutoDriveDistanceInches);
   private final ShootNScoot m_shootNScoot = new ShootNScoot(m_drivetrain, m_bolt, m_shooter);
-
-
-
+  private final SpinIntake m_spinIntake = new SpinIntake(m_intake);
 
 
   //private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
@@ -126,7 +125,7 @@ public class RobotContainer {
     driverController.leftBumper.whenPressed(m_lowGear);
     driverController.rightBumper.whenPressed(m_highGear);
     driverController.yButton.whenPressed(m_toggleGear);
-    driverController.bButton.whenPressed(m_climbtilt);
+    driverController.bButton.whenPressed(m_climbTilt);
     driverController.xButton.whenHeld(m_depoly);
     driverController.aButton.whileHeld(m_wench);
     driverController.selectButton.whenPressed(m_toggleCompressor);
@@ -136,6 +135,7 @@ public class RobotContainer {
     operatorController.aButton.whenHeld(m_runShooter);
     operatorController.bButton.whenHeld(m_runIntake);
     operatorController.xButton.whileHeld(m_runConveyor);
+    operatorController.yButton.whileHeld(m_spinIntake);
     operatorController.rightBumper.whileHeld(m_fire);
 
   }
