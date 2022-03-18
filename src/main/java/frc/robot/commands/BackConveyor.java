@@ -6,9 +6,10 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Conveyor;
+import edu.wpi.first.wpilibj.Timer;
 
 
-public class RunConveyor extends CommandBase {
+public class BackConveyor extends CommandBase {
    /**
    * Creates a new RunConveyor.
    *
@@ -19,7 +20,7 @@ public class RunConveyor extends CommandBase {
 
  
    /** Creates a new RunConveyor. */
-  public RunConveyor(Conveyor subsystem) {
+  public BackConveyor(Conveyor subsystem) {
     m_conveyor = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_conveyor);
@@ -32,18 +33,21 @@ public class RunConveyor extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_conveyor.runConveyor();
+    m_conveyor.backConveyor();
+    
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    Timer.delay(0.1);
     m_conveyor.stop();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;  //return to false if tallahasseetest fails
+    return true;
   }
 }
+

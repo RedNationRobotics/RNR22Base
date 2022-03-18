@@ -24,6 +24,7 @@ import frc.robot.commands.StopShooter;
 import frc.robot.commands.ToggleCompressor;
 import frc.robot.autoCommands.DriveForward;
 import frc.robot.autoCommands.ShootNScoot;
+import frc.robot.commands.BackConveyor;
 import frc.robot.commands.ClimbTilt;
 import frc.robot.commands.Deploy;
 import frc.robot.commands.Drive;
@@ -87,6 +88,7 @@ public class RobotContainer {
   private final DriveForward m_driveForward = new DriveForward(m_drivetrain, Constants.kAutoDriveDistanceInches);
   private final ShootNScoot m_shootNScoot = new ShootNScoot(m_drivetrain, m_bolt, m_shooter);
   private final SpinIntake m_spinIntake = new SpinIntake(m_intake);
+  private final BackConveyor m_backConveyor = new BackConveyor(m_conveyor);
 
 
   //private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
@@ -132,9 +134,11 @@ public class RobotContainer {
 
     operatorController.aButton.whenHeld(m_runShooter);
     operatorController.bButton.whenHeld(m_runIntake);
-    operatorController.xButton.whileHeld(m_runConveyor);
+    operatorController.xButton.whenPressed(m_runConveyor);
+    operatorController.xButton.whenReleased(m_backConveyor);
     operatorController.yButton.whileHeld(m_spinIntake);
     operatorController.rightBumper.whileHeld(m_fire);
+    operatorController.leftBumper.whileHeld(m_runConveyor);
 
   }
 

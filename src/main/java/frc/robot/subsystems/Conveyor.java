@@ -32,6 +32,10 @@ public class Conveyor extends SubsystemBase /*implements Command*/{
     set(-Constants.kConveySpeed);
   }
 
+  public void backConveyor(){
+    set(Constants.kConveySpeed);
+  }
+
   public void stop(){
     m_conveyor.stopMotor();
   }
