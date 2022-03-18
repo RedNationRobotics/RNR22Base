@@ -130,8 +130,6 @@ public class RobotContainer {
     driverController.aButton.whileHeld(m_wench);
     driverController.selectButton.whenPressed(m_toggleCompressor);
 
-
-
     operatorController.aButton.whenHeld(m_runShooter);
     operatorController.bButton.whenHeld(m_runIntake);
     operatorController.xButton.whileHeld(m_runConveyor);
