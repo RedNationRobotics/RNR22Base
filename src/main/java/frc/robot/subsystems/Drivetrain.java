@@ -89,7 +89,7 @@ public class Drivetrain extends SubsystemBase {
    * @return the left drive encoder
    */
   public double getLeftEncoder() {
-    return -m_leftEncoder.getPosition();
+    return m_leftEncoder.getPosition();
   }
 
   /**

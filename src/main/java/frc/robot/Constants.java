@@ -14,7 +14,7 @@ package frc.robot;
  */
 public final class Constants {
     // Auto Constants
-    public static final double kAutoDriveDistanceInches = 82;
+    public static final double kAutoDriveDistanceInches = 52; //58 yeilds 90 inches
     public static final double kAutoRotation = 0;
     public static final double kAutoDriveSpeed = 0.5;
     
@@ -51,20 +51,20 @@ public final class Constants {
     public static final int[] kClimbMotors = {9, 10};
 
     // Pneumatics
-    public static final int kShiftSolenoid = 2;
+    public static final int kShiftSolenoid = 0;
     public static final int kShootSolenoid = 3;
     public static final int kIntakeSolenoid = 1;
-    public static final int kTiltSolenoid = 0;
+    public static final int kTiltSolenoid = 2;
 
     public static final int kph_ID = 1;
     public static final double kMin_PSI = 100.0;
     public static final double kMax_PSI = 120.0;
 
     // Shooter Speed
-    public static final double kShooterSpeed = 0.9;
+    public static final double kShooterSpeed = 1.0;
 
     // Intake Speed
-    public static final double kIntakeSpeed = 0.5;
+    public static final double kIntakeSpeed = 0.85;
 
     // Convey Speed
     public static final double kConveySpeed = 0.9;

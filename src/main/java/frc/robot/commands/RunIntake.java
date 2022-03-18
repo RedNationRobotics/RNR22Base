@@ -17,8 +17,8 @@ public class RunIntake extends CommandBase {
   private final Intake m_intake;
  
    /** Creates a new Intake. */
-  public RunIntake(Intake subsystem) {
-    m_intake = subsystem;
+  public RunIntake(Intake m_intake2) {
+    m_intake = m_intake2;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_intake);
   }
