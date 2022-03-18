@@ -13,7 +13,7 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-    // Auto Constants
+    // Auto Constants *test*
     public static final double kAutoDriveDistanceInches = 52; //58 yeilds 90 inches
     public static final double kAutoRotation = 0;
     public static final double kAutoDriveSpeed = 0.5;
