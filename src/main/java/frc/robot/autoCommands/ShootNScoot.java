@@ -49,7 +49,7 @@ public class ShootNScoot extends ParallelCommandGroup {
       new RunCommand(() -> m_shooter.shoot(), m_shooter),
             new SequentialCommandGroup(
               // Wait for shooter to spool up
-              new WaitCommand(0.5),
+              new WaitCommand(1.5),
               // Fire bolt
               new ScheduleCommand(m_fire),
               new WaitCommand(0.2),

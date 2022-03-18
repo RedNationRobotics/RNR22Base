@@ -61,7 +61,7 @@ public final class Constants {
     public static final double kMax_PSI = 120.0;
 
     // Shooter Speed
-    public static final double kShooterSpeed = 1.0;
+    public static final double kShooterSpeed = 0.93;
 
     // Intake Speed
     public static final double kIntakeSpeed = 0.85;
