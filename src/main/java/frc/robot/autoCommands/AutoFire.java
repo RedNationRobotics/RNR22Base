@@ -4,6 +4,7 @@
 
 package frc.robot.autoCommands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Bolt;
 
@@ -38,6 +39,7 @@ public class AutoFire extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    Timer.delay(1.0);
     m_bolt.load();
   }
 
