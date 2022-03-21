@@ -115,6 +115,8 @@ public class RobotContainer {
     SmartDashboard.putNumber("lEncoder", m_drivetrain.getLeftEncoder());
     SmartDashboard.putNumber("Average Distance", m_drivetrain.getAverageEncoderDistance());
     SmartDashboard.putBoolean("High", m_shifting.isHighGear());
+    SmartDashboard.putNumber("Left Shooter", m_shooter.getLeftEncoder());
+    SmartDashboard.putNumber("Right Shooter", m_shooter.getRightEncoder());
   }
 
   /**

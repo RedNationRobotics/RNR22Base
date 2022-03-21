@@ -5,6 +5,7 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -15,7 +16,15 @@ public class Shooter extends SubsystemBase {
   //Shooter Motors
   private final CANSparkMax m_leftMotor = new CANSparkMax(Constants.kShooterMotors[0], MotorType.kBrushless);
   private final CANSparkMax m_rightMotor = new CANSparkMax(Constants.kShooterMotors[1], MotorType.kBrushless);
-    /** Constructor: Creates a new Shooter. */
+
+  // Left side encoder
+  private RelativeEncoder m_leftEncoder = m_leftMotor.getEncoder();
+  
+  // Right side encoder
+  private RelativeEncoder m_rightEncoder = m_rightMotor.getEncoder();
+
+  /** Constructor: Creates a new Shooter. */
+
   public Shooter() {
     //Sendables go here
     
@@ -42,6 +51,33 @@ public class Shooter extends SubsystemBase {
       m_leftMotor.stopMotor();
       m_rightMotor.stopMotor();
   }
+
+  /**
+   * Gets the average distance of the TWO encoders.
+   *
+   * @return the average of the TWO encoder readings
+   */
+  public double getAverageEncoderVelocity() {
+    return (getLeftEncoder() + getRightEncoder()) / 2.0;
+  }
+
+  /**
+   * Gets the left drive encoder.
+   *
+   * @return the left drive encoder
+   */
+  public double getLeftEncoder() {
+    return m_leftEncoder.getVelocity();
+  }
+
+  /**
+   * Gets the right drive encoder.
+   *
+   * @return the right drive encoder
+   */
+  public double getRightEncoder() {
+    return m_rightEncoder.getVelocity();
+  }  
 
   @Override
   public void periodic() {
