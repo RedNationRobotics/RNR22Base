@@ -6,7 +6,7 @@ package frc.robot.autoCommands;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Bolt;
+import frc.robot.subsystems.Shooter;
 
 public class AutoFire extends CommandBase {
    /**
@@ -15,19 +15,19 @@ public class AutoFire extends CommandBase {
    * @param Bolt The subsystem used by this command.
    */
 
-  private final Bolt m_bolt;
+  private final Shooter m_shooter;
  
    /** Creates a new Fire */
-  public AutoFire(Bolt subsystem) {
-    m_bolt = subsystem;
+  public AutoFire(Shooter subsystem) {
+    m_shooter = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(m_bolt);
+    addRequirements(m_shooter);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_bolt.fire();
+    m_shooter.fire();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -40,7 +40,7 @@ public class AutoFire extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     Timer.delay(1.0);
-    m_bolt.load();
+    m_shooter.load();
   }
 
   // Returns true when the command should end.

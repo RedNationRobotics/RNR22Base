@@ -24,6 +24,7 @@ import frc.robot.commands.StopShooter;
 import frc.robot.commands.ToggleCompressor;
 import frc.robot.autoCommands.DriveForward;
 import frc.robot.autoCommands.ShootNScoot;
+import frc.robot.commands.AutomatedFire;
 import frc.robot.commands.BackConveyor;
 import frc.robot.commands.ClimbTilt;
 import frc.robot.commands.Deploy;
@@ -33,7 +34,6 @@ import frc.robot.commands.HighGear;
 import frc.robot.commands.LowGear;
 import frc.robot.commands.ToggleGear;
 import frc.robot.commands.Wench;
-import frc.robot.subsystems.Bolt;
 import frc.robot.subsystems.Climb;
 import frc.robot.subsystems.Conveyor;
 import frc.robot.subsystems.Drivetrain;
@@ -58,7 +58,6 @@ public class RobotContainer {
 
   // The robot's subsystems are defined here...
   //private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-  private final Bolt m_bolt = new Bolt();
   private final Conveyor m_conveyor = new Conveyor();
   private final Drivetrain m_drivetrain = new Drivetrain();
   private final Intake m_intake = new Intake();
@@ -71,7 +70,7 @@ public class RobotContainer {
   
   // The robot's commands are defined here...
  
-  private final Fire m_fire = new Fire(m_bolt);
+  private final Fire m_fire = new Fire(m_shooter);
   private final HighGear m_highGear = new HighGear(m_shifting);
   private final LowGear m_lowGear = new LowGear(m_shifting);
   private final RunConveyor m_runConveyor = new RunConveyor(m_conveyor);
@@ -86,13 +85,14 @@ public class RobotContainer {
   private final Deploy m_depoly = new Deploy(m_climb);
   private final ClimbTilt m_climbTilt = new ClimbTilt(m_tilt);
   private final DriveForward m_driveForward = new DriveForward(m_drivetrain, Constants.kAutoDriveDistanceInches);
-  private final ShootNScoot m_shootNScoot = new ShootNScoot(m_drivetrain, m_bolt, m_shooter);
+  private final ShootNScoot m_shootNScoot = new ShootNScoot(m_drivetrain, m_shooter);
   private final SpinIntake m_spinIntake = new SpinIntake(m_intake);
   private final BackConveyor m_backConveyor = new BackConveyor(m_conveyor);
+  private final AutomatedFire m_automatedFire = new AutomatedFire(m_shooter);
 
 
   //private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-  private final ShootNScoot m_autoCommand = new ShootNScoot(m_drivetrain, m_bolt, m_shooter);
+  private final ShootNScoot m_autoCommand = new ShootNScoot(m_drivetrain, m_shooter);
   //private final DriveForward m_autoCommand = new DriveForward(m_drivetrain, Constants.kAutoDriveDistanceInches);
   
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -141,7 +141,7 @@ public class RobotContainer {
     operatorController.xButton.whenReleased(m_backConveyor);
     operatorController.yButton.whileHeld(m_spinIntake);
     operatorController.rightBumper.whileHeld(m_fire);
-    operatorController.leftBumper.whileHeld(m_runConveyor);
+    operatorController.leftBumper.whenPressed(m_automatedFire);
 
   }
 

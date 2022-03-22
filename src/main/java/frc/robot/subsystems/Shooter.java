@@ -8,6 +8,8 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.commands.StopShooter;
@@ -22,6 +24,9 @@ public class Shooter extends SubsystemBase {
   
   // Right side encoder
   private RelativeEncoder m_rightEncoder = m_rightMotor.getEncoder();
+
+  // Shooter bolt solenoid
+  private final Solenoid m_solenoid = new Solenoid(PneumaticsModuleType.REVPH, Constants.kShootSolenoid);
 
   /** Constructor: Creates a new Shooter. */
 
@@ -52,12 +57,22 @@ public class Shooter extends SubsystemBase {
       m_rightMotor.stopMotor();
   }
 
+  // Methods to control the solenoid
+  
+  public void fire() {
+    m_solenoid.set(true);
+  }
+
+  public void load() {
+    m_solenoid.set(false);
+  }
+
   /**
    * Gets the average distance of the TWO encoders.
    *
    * @return the average of the TWO encoder readings
    */
-  public double getAverageEncoderVelocity() {
+  public double getAvgVelocity() {
     return (getLeftEncoder() + getRightEncoder()) / 2.0;
   }
 
@@ -67,7 +82,7 @@ public class Shooter extends SubsystemBase {
    * @return the left drive encoder
    */
   public double getLeftEncoder() {
-    return m_leftEncoder.getVelocity();
+    return -m_leftEncoder.getVelocity();
   }
 
   /**
@@ -76,7 +91,7 @@ public class Shooter extends SubsystemBase {
    * @return the right drive encoder
    */
   public double getRightEncoder() {
-    return m_rightEncoder.getVelocity();
+    return -m_rightEncoder.getVelocity();
   }  
 
   @Override

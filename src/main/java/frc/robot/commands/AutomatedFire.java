@@ -6,20 +6,26 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.subsystems.Shooter;
 
-public class Fire extends CommandBase {
-   /**
-   * Creates a new Bolt.
-   *
-   * @param Shooter The subsystem used by this command.
-   */
 
-  private final Shooter m_shooter;
- 
-   /** Creates a new Fire */
-  public Fire(Shooter subsystem) {
+
+public class AutomatedFire extends CommandBase {
+/**
+ * 
+ * @param Shooter The subsystem used by this command
+ * 
+ */
+  
+ private final Shooter m_shooter;
+ private final double m_velocity;
+
+  /** Creates a new AutomatedFire. */
+  
+  public AutomatedFire(Shooter subsystem) {
     m_shooter = subsystem;
+    m_velocity = Constants.kShooterAvgVelocity;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_shooter);
   }
@@ -32,22 +38,23 @@ public class Fire extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-    //m_bolt.fire();
-  }
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
     m_shooter.fire();
-    Timer.delay(0.5);
+    Timer.delay(0.2);
     m_shooter.load();
-    m_shooter.stop();
+    m_shooter.stop();  
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    if (m_shooter.getAvgVelocity() >= m_velocity)
+      return true;
+    else 
+      return false;
   }
 }
