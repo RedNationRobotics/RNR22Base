@@ -32,7 +32,7 @@ public class Shooter extends SubsystemBase {
   // PID Controller
   public SparkMaxPIDController m_pidController = m_leftMotor.getPIDController();
 
-  public double kP = 0.0005, kI = 0.0, kD = 0.0, kIz = 0.0, kFF = 0.000015, kMaxOutput = 1, kMinOutput = 0, maxRPM = Constants.kShooterRPM;
+  public double kP = 0.000009999, kI = 0.0, kD = 0.0, kIz = 0.0, kFF = 0.00009, kMaxOutput = 1, kMinOutput = 0, maxRPM = Constants.kShooterRPM;
 
   // Shooter bolt solenoid
   private final Solenoid m_solenoid = new Solenoid(PneumaticsModuleType.REVPH, Constants.kShootSolenoid);

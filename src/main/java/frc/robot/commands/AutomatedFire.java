@@ -25,7 +25,7 @@ public class AutomatedFire extends CommandBase {
   
   public AutomatedFire(Shooter subsystem) {
     m_shooter = subsystem;
-    m_velocity = Constants.kShooterRPM;
+    m_velocity = -Constants.kFireVelocity;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_shooter);
   }
@@ -33,7 +33,7 @@ public class AutomatedFire extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_shooter.shoot(); // hange to set() after PID is tuned
+    m_shooter.set(); // hange to set() after PID is tuned
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -43,8 +43,9 @@ public class AutomatedFire extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    Timer.delay(0.5);
     m_shooter.fire();
-    Timer.delay(0.2);
+    Timer.delay(0.5);
     m_shooter.load();
     m_shooter.stop();  
   }
