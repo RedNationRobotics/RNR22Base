@@ -11,7 +11,7 @@ import frc.robot.subsystems.Shooter;
 
 
 
-public class AutomatedFire extends CommandBase {
+public class LowFire extends CommandBase {
 /**
  * 
  * @param Shooter The subsystem used by this command
@@ -23,9 +23,9 @@ public class AutomatedFire extends CommandBase {
 
   /** Creates a new AutomatedFire. */
   
-  public AutomatedFire(Shooter subsystem) {
+  public LowFire(Shooter subsystem) {
     m_shooter = subsystem;
-    m_velocity = -Constants.kFireVelocity;
+    m_velocity = -Constants.kFireVelocity1;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_shooter);
   }
@@ -33,7 +33,7 @@ public class AutomatedFire extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_shooter.set(); // hange to set() after PID is tuned
+    m_shooter.lowGoal(); // hange to set() after PID is tuned
   }
 
   // Called every time the scheduler runs while the command is scheduled.

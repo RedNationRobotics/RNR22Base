@@ -11,7 +11,7 @@ import com.revrobotics.SparkMaxPIDController;
 
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.commands.StopShooter;
@@ -30,7 +30,8 @@ public class Shooter extends SubsystemBase {
   // PID Controller
   public SparkMaxPIDController m_pidController = m_leftMotor.getPIDController();
 
-  public double kP = 0.000009999, kI = 0.0, kD = 0.0, kIz = 0.0, kFF = 0.00009, kMaxOutput = 1, kMinOutput = 0, maxRPM = Constants.kShooterRPM;
+  public double kP0 = 0.000009999, kI0 = 0.0, kD0 = 0.0, kIz0 = 0.0, kFF0 = 0.00009, kMaxOutput0 = 1, kMinOutput0 = 0, maxRPM0 = Constants.kShooterRPM0;
+  public double kP1 = 0.000009999, kI1 = 0.0, kD1 = 0.0, kIz1 = 0.0, kFF1 = 0.00009, kMaxOutput1 = 1, kMinOutput1 = 0, maxRPM1 = Constants.kShooterRPM0;
 
   // Shooter bolt solenoid
   private final Solenoid m_solenoid = new Solenoid(PneumaticsModuleType.REVPH, Constants.kShootSolenoid);
@@ -54,15 +55,23 @@ public class Shooter extends SubsystemBase {
     m_leftMotor.setInverted(true);
     m_rightMotor.follow(m_leftMotor, true);
 
-    // set PID coefficients
-    m_pidController.setP(kP);
-    m_pidController.setI(kI);
-    m_pidController.setD(kD);
-    m_pidController.setIZone(kIz);
-    m_pidController.setFF(kFF);
-    m_pidController.setOutputRange(kMinOutput, kMaxOutput);
+    // set PID0 coefficients
+    m_pidController.setP(kP0, 0);
+    m_pidController.setI(kI0, 0);
+    m_pidController.setD(kD0, 0);
+    m_pidController.setIZone(kIz0, 0);
+    m_pidController.setFF(kFF0, 0);
+    m_pidController.setOutputRange(kMinOutput0, kMaxOutput0, 0);
 
-    // display PID coefficients on SmartDashboard
+    // set PID1 coefficients
+    m_pidController.setP(kP0, 1);
+    m_pidController.setI(kI0, 1);
+    m_pidController.setD(kD0, 1);
+    m_pidController.setIZone(kIz0, 1);
+    m_pidController.setFF(kFF0, 1);
+    m_pidController.setOutputRange(kMinOutput0, kMaxOutput0, 1);
+
+    /* display PID coefficients on SmartDashboard
     SmartDashboard.putNumber("P Gain", kP);
     SmartDashboard.putNumber("I Gain", kI);
     SmartDashboard.putNumber("D Gain", kD);
@@ -70,19 +79,28 @@ public class Shooter extends SubsystemBase {
     SmartDashboard.putNumber("Feed Forward", kFF);
     SmartDashboard.putNumber("Max Output", kMaxOutput);
     SmartDashboard.putNumber("Min Output", kMinOutput);
+    */
       
   }
 
-  // Methods to control shooter speed
-  public void set(){
-    double setPoint = maxRPM;
-    m_pidController.setReference(setPoint, CANSparkMax.ControlType.kVelocity);
+  // Methods to control shooter speed for high goal
+  public void highGoal(){
+    double setPoint = maxRPM0;
+    m_pidController.setReference(setPoint, CANSparkMax.ControlType.kVelocity, 0);
     
-
+    /*
     SmartDashboard.putNumber("SetPoint", setPoint);
     SmartDashboard.putNumber("ProcessVariable", m_leftEncoder.getVelocity());
     SmartDashboard.putNumber("Output", m_leftMotor.getAppliedOutput());
+    */
   }
+
+  // Methods to control shooter speed for low goal
+  public void lowGoal(){
+    double setPoint = maxRPM0;
+    m_pidController.setReference(setPoint, CANSparkMax.ControlType.kVelocity, 0);
+    
+  }  
 
   public void shoot(){
     m_leftMotor.set(-Constants.kShooterSpeed);

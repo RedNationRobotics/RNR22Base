@@ -62,8 +62,11 @@ public final class Constants {
 
     // Shooter Speed
     public static final double kShooterSpeed = 0.93;
-    public static final double kShooterRPM = 9000.0;
-    public static final double kFireVelocity = 8800.0;
+    public static final double kShooterRPM0 = 8000.0;
+    public static final double kShooterRPM1 = 5500.0;
+    public static final double kFireVelocity0 = 7800.0;
+    public static final double kFireVelocity1 = 5300.0;
+
 
     // Intake Speed
     public static final double kIntakeSpeed = 0.85;
