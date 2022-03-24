@@ -11,6 +11,7 @@ import com.revrobotics.SparkMaxPIDController;
 
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -31,7 +32,7 @@ public class Shooter extends SubsystemBase {
   public SparkMaxPIDController m_pidController = m_leftMotor.getPIDController();
 
   public double kP0 = 0.000009999, kI0 = 0.0, kD0 = 0.0, kIz0 = 0.0, kFF0 = 0.00009, kMaxOutput0 = 1, kMinOutput0 = 0, maxRPM0 = Constants.kShooterRPM0;
-  public double kP1 = 0.000009999, kI1 = 0.0, kD1 = 0.0, kIz1 = 0.0, kFF1 = 0.00009, kMaxOutput1 = 1, kMinOutput1 = 0, maxRPM1 = Constants.kShooterRPM0;
+  public double kP1 = 0.000009999, kI1 = 0.0, kD1 = 0.0, kIz1 = 0.0, kFF1 = 0.00009, kMaxOutput1 = 1, kMinOutput1 = 0, maxRPM1 = Constants.kShooterRPM1;
 
   // Shooter bolt solenoid
   private final Solenoid m_solenoid = new Solenoid(PneumaticsModuleType.REVPH, Constants.kShootSolenoid);
@@ -97,14 +98,14 @@ public class Shooter extends SubsystemBase {
 
   // Methods to control shooter speed for low goal
   public void lowGoal(){
-    double setPoint = maxRPM0;
-    m_pidController.setReference(setPoint, CANSparkMax.ControlType.kVelocity, 0);
+    double setPoint = maxRPM1;
+    m_pidController.setReference(setPoint, CANSparkMax.ControlType.kVelocity, 1);
     
   }  
 
   public void shoot(){
-    m_leftMotor.set(-Constants.kShooterSpeed);
-    m_rightMotor.set(-Constants.kShooterSpeed);
+    m_leftMotor.set(-Constants.kShooterRev);
+    m_rightMotor.set(-Constants.kShooterRev);
   }
 
   public void stop(){
@@ -152,6 +153,8 @@ public class Shooter extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    SmartDashboard.putNumber("rEncoder", getRightEncoder());
+    SmartDashboard.putNumber("lEncoder", getLeftEncoder());
   }
 
   @Override

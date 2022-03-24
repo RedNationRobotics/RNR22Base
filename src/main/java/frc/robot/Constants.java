@@ -14,7 +14,7 @@ package frc.robot;
  */
 public final class Constants {
     // Auto Constants *test*
-    public static final double kAutoDriveDistanceInches = 52; //58 yeilds 90 inches
+    public static final double kAutoDriveDistanceInches = 80; //58 yeilds 90 inches
     public static final double kAutoRotation = 0;
     public static final double kAutoDriveSpeed = 0.5;
     
@@ -61,11 +61,11 @@ public final class Constants {
     public static final double kMax_PSI = 120.0;
 
     // Shooter Speed
-    public static final double kShooterSpeed = 0.93;
-    public static final double kShooterRPM0 = 8000.0;
-    public static final double kShooterRPM1 = 5500.0;
-    public static final double kFireVelocity0 = 7800.0;
-    public static final double kFireVelocity1 = 5300.0;
+    public static final double kShooterRev = 0.4;
+    public static final double kShooterRPM0 = 7500.0;
+    public static final double kShooterRPM1 = 5000.0;
+    public static final double kFireVelocity0 = 7400.0;
+    public static final double kFireVelocity1 = 4900.0;
 
 
     // Intake Speed

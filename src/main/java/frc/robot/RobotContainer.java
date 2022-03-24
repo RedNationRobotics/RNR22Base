@@ -31,6 +31,7 @@ import frc.robot.commands.Deploy;
 import frc.robot.commands.Drive;
 import frc.robot.commands.Fire;
 import frc.robot.commands.HighGear;
+import frc.robot.commands.LowFire;
 import frc.robot.commands.LowGear;
 import frc.robot.commands.ToggleGear;
 import frc.robot.commands.Wench;
@@ -89,6 +90,7 @@ public class RobotContainer {
   private final SpinIntake m_spinIntake = new SpinIntake(m_intake);
   private final BackConveyor m_backConveyor = new BackConveyor(m_conveyor);
   private final HighFire m_highFire = new HighFire(m_shooter);
+  private final LowFire m_lowFire = new LowFire(m_shooter);
 
 
   //private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
@@ -111,8 +113,8 @@ public class RobotContainer {
   public void dashboard() {
     SmartDashboard.putNumber("Pressure 0", m_ph.getPressure(0));
     SmartDashboard.putBoolean("Comp", m_ph.getCompressor());
-    SmartDashboard.putNumber("rEncoder", m_drivetrain.getRightEncoder());
-    SmartDashboard.putNumber("lEncoder", m_drivetrain.getLeftEncoder());
+    //SmartDashboard.putNumber("rEncoder", m_drivetrain.getRightEncoder());
+    //SmartDashboard.putNumber("lEncoder", m_drivetrain.getLeftEncoder());
     SmartDashboard.putNumber("Average Distance", m_drivetrain.getAverageEncoderDistance());
     SmartDashboard.putBoolean("High", m_shifting.isHighGear());
     SmartDashboard.putNumber("Left Shooter", m_shooter.getLeftEncoder());
@@ -140,7 +142,7 @@ public class RobotContainer {
     operatorController.xButton.whenPressed(m_runConveyor);
     operatorController.xButton.whenReleased(m_backConveyor);
     operatorController.yButton.whileHeld(m_spinIntake);
-    operatorController.rightBumper.whileHeld(m_fire);
+    operatorController.rightBumper.whileHeld(m_lowFire);
     operatorController.leftBumper.whenPressed(m_highFire);
 
   }
