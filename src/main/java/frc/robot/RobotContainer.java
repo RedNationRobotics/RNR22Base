@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.lib.controllers.RNRXboxController;
 import frc.robot.autoCommands.DriveForward;
 import frc.robot.autoCommands.HighShootNScoot;
+import frc.robot.autoCommands.LowShootNScoot;
 import frc.robot.commands.BackConveyor;
 import frc.robot.commands.ClimbTilt;
 import frc.robot.commands.Deploy;
@@ -94,23 +95,23 @@ public class RobotContainer {
 
   // Auto Commands
   private final HighShootNScoot m_highScootNShoot = new HighShootNScoot(m_drivetrain, m_shooter, m_bolt);
+  private final LowShootNScoot m_lowScootNShoot = new LowShootNScoot(m_drivetrain, m_shooter, m_bolt);
 
   // Create Sendable Chooser
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
   //private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
   private final HighShootNScoot m_autoCommand = new HighShootNScoot(m_drivetrain, m_shooter, m_bolt);
-  //private final DriveForward m_autoCommand = new DriveForward(m_drivetrain, Constants.kAutoDriveDistanceInches);
-  
+    
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Add commands to the autonomous command chooser
     m_chooser.setDefaultOption("High Goal Auto", m_highScootNShoot);
-    //m_chooser.addOption("Complex Auto", m_complexAuto);
+    m_chooser.addOption("Low Goal Auto", m_lowScootNShoot);
 
     // Put the chooser on the dashboard
     SmartDashboard.putData(m_chooser);
-    
+
     // Configure the button bindings method call
     configureButtonBindings();
     m_PHub.enable();
