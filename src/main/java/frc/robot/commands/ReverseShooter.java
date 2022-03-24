@@ -5,40 +5,38 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Shooter;
 
-public class StopIntake extends CommandBase {
+public class ReverseShooter extends CommandBase {
    /**
-   * Creates a new Shoot.
+   * Creates a new RunShooter.
    *
    * @param Shooter The subsystem used by this command.
    */
 
-  private final Intake m_intake;
+  private final Shooter m_shooter;
  
    /** Creates a new Shoot. */
-  public StopIntake(Intake subsystem) {
-    m_intake = subsystem;
+  public ReverseShooter(Shooter subsystem) {
+    m_shooter = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(m_intake);
+    addRequirements(m_shooter);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    m_intake.stop();
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    
+    m_shooter.shoot();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-
+    m_shooter.stop();
   }
 
   // Returns true when the command should end.

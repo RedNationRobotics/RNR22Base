@@ -4,14 +4,13 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.Shooter;
 
 
-
-public class LowFire extends CommandBase {
+@SuppressWarnings("unused")
+public class HighShot extends CommandBase {
 /**
  * 
  * @param Shooter The subsystem used by this command
@@ -23,9 +22,9 @@ public class LowFire extends CommandBase {
 
   /** Creates a new AutomatedFire. */
   
-  public LowFire(Shooter subsystem) {
+  public HighShot(Shooter subsystem) {
     m_shooter = subsystem;
-    m_velocity = -Constants.kFireVelocity1;
+    m_velocity = Constants.kFireVelocity0;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_shooter);
   }
@@ -33,7 +32,7 @@ public class LowFire extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_shooter.lowGoal(); // hange to set() after PID is tuned
+    m_shooter.highGoal(); // hange to set() after PID is tuned
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -43,19 +42,13 @@ public class LowFire extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Timer.delay(0.5);
-    m_shooter.fire();
-    Timer.delay(0.5);
-    m_shooter.load();
     m_shooter.stop();  
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (m_shooter.getAvgVelocity() >= m_velocity)
-      return true;
-    else 
-      return false;
+    return false;
+  
   }
 }

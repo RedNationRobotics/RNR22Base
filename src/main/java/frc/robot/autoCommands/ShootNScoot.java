@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj2.command.ScheduleCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.Constants;
-import frc.robot.commands.HighFire;
+import frc.robot.commands.HighShot;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Shooter;
 
@@ -27,7 +27,7 @@ public class ShootNScoot extends ParallelCommandGroup {
   */
   private final Drivetrain m_drivetrain;
   private final Shooter m_shooter;
-  private final HighFire m_fire;
+  private final HighShot m_fire;
   private final DriveForward m_driveForward;
   private final double m_distance;
   //private final AutoStopShooter m_stopShooter;
@@ -36,7 +36,7 @@ public class ShootNScoot extends ParallelCommandGroup {
     m_drivetrain = drivetrain;
     m_shooter = shooter;
     m_distance = Constants.kAutoDriveDistanceInches;
-    m_fire = new HighFire(m_shooter);
+    m_fire = new HighShot(m_shooter);
     m_driveForward = new DriveForward(m_drivetrain, m_distance);
     //m_stopShooter = new AutoStopShooter(m_shooter);
 

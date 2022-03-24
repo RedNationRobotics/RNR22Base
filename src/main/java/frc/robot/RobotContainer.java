@@ -4,37 +4,33 @@
 
 package frc.robot;
 
-import javax.swing.text.StyleContext.SmallAttributeSet;
-
-import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.PneumaticHub;
-import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.lib.controllers.RNRXboxController;
-import frc.robot.commands.RunConveyor;
-import frc.robot.commands.RunIntake;
-import frc.robot.commands.RunShooter;
-import frc.robot.commands.SpinIntake;
-import frc.robot.commands.StopConveyor;
-import frc.robot.commands.StopIntake;
-import frc.robot.commands.StopShooter;
-import frc.robot.commands.ToggleCompressor;
 import frc.robot.autoCommands.DriveForward;
 import frc.robot.autoCommands.ShootNScoot;
-import frc.robot.commands.HighFire;
 import frc.robot.commands.BackConveyor;
 import frc.robot.commands.ClimbTilt;
 import frc.robot.commands.Deploy;
-import frc.robot.commands.Drive;
 import frc.robot.commands.Fire;
 import frc.robot.commands.HighGear;
-import frc.robot.commands.LowFire;
+import frc.robot.commands.HighGoal;
+import frc.robot.commands.HighShot;
 import frc.robot.commands.LowGear;
+import frc.robot.commands.LowGoal;
+import frc.robot.commands.LowShot;
+import frc.robot.commands.RunConveyor;
+import frc.robot.commands.RunIntake;
+import frc.robot.commands.ReverseShooter;
+import frc.robot.commands.SpinIntake;
+import frc.robot.commands.StopShooter;
+import frc.robot.commands.ToggleCompressor;
 import frc.robot.commands.ToggleGear;
 import frc.robot.commands.Wench;
+import frc.robot.subsystems.Bolt;
 import frc.robot.subsystems.Climb;
 import frc.robot.subsystems.Conveyor;
 import frc.robot.subsystems.Drivetrain;
@@ -67,18 +63,17 @@ public class RobotContainer {
   private final Shooter m_shooter = new Shooter();
   private final Climb m_climb = new Climb();
   private final Tilt m_tilt = new Tilt();
+  private final Bolt m_bolt = new Bolt();
 
   
   // The robot's commands are defined here...
  
-  private final Fire m_fire = new Fire(m_shooter);
+  private final Fire m_fire = new Fire(m_bolt);
   private final HighGear m_highGear = new HighGear(m_shifting);
   private final LowGear m_lowGear = new LowGear(m_shifting);
   private final RunConveyor m_runConveyor = new RunConveyor(m_conveyor);
   private final RunIntake m_runIntake = new RunIntake(m_intake);
-  private final RunShooter m_runShooter = new RunShooter(m_shooter);
-  private final StopConveyor m_stopConveyor = new StopConveyor(m_conveyor);
-  private final StopIntake m_stopIntake = new StopIntake(m_intake);
+  private final ReverseShooter m_runShooter = new ReverseShooter(m_shooter);
   private final StopShooter m_stopShooter = new StopShooter(m_shooter);
   private final ToggleCompressor m_toggleCompressor = new ToggleCompressor(m_PHub);
   private final ToggleGear m_toggleGear = new ToggleGear(m_shifting);
@@ -89,8 +84,11 @@ public class RobotContainer {
   private final ShootNScoot m_shootNScoot = new ShootNScoot(m_drivetrain, m_shooter);
   private final SpinIntake m_spinIntake = new SpinIntake(m_intake);
   private final BackConveyor m_backConveyor = new BackConveyor(m_conveyor);
-  private final HighFire m_highFire = new HighFire(m_shooter);
-  private final LowFire m_lowFire = new LowFire(m_shooter);
+  private final HighShot m_highFire = new HighShot(m_shooter);
+  private final LowShot m_lowFire = new LowShot(m_shooter);
+  private final HighGoal m_highGoal = new HighGoal(m_shooter, m_bolt);
+  private final LowGoal m_lowGoal = new LowGoal(m_shooter, m_bolt);
+
 
 
   //private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
@@ -142,8 +140,8 @@ public class RobotContainer {
     operatorController.xButton.whenPressed(m_runConveyor);
     operatorController.xButton.whenReleased(m_backConveyor);
     operatorController.yButton.whileHeld(m_spinIntake);
-    operatorController.rightBumper.whileHeld(m_lowFire);
-    operatorController.leftBumper.whenPressed(m_highFire);
+    operatorController.rightBumper.whenPressed(m_lowGoal);
+    operatorController.leftBumper.whenPressed(m_highGoal);
 
   }
 

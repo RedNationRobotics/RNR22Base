@@ -9,10 +9,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkMaxPIDController;
 
-import edu.wpi.first.wpilibj.PneumaticsModuleType;
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.commands.StopShooter;
@@ -34,13 +31,10 @@ public class Shooter extends SubsystemBase {
   public double kP0 = 0.000009999, kI0 = 0.0, kD0 = 0.0, kIz0 = 0.0, kFF0 = 0.00009, kMaxOutput0 = 1, kMinOutput0 = 0, maxRPM0 = Constants.kShooterRPM0;
   public double kP1 = 0.000009999, kI1 = 0.0, kD1 = 0.0, kIz1 = 0.0, kFF1 = 0.00009, kMaxOutput1 = 1, kMinOutput1 = 0, maxRPM1 = Constants.kShooterRPM1;
 
-  // Shooter bolt solenoid
-  private final Solenoid m_solenoid = new Solenoid(PneumaticsModuleType.REVPH, Constants.kShootSolenoid);
-
-  /** Constructor: Creates a new Shooter. */
+    /** Constructor: Creates a new Shooter. */
   public Shooter() {
     //Sendables go here
-    
+
     // Default Command
     this.setDefaultCommand(new StopShooter(this));
     
@@ -113,16 +107,6 @@ public class Shooter extends SubsystemBase {
       m_rightMotor.stopMotor();
   }
 
-  // Methods to control the solenoid
-  
-  public void fire() {
-    m_solenoid.set(true);
-  }
-
-  public void load() {
-    m_solenoid.set(false);
-  }
-
   /**
    * Gets the average distance of the TWO encoders.
    *
@@ -138,7 +122,7 @@ public class Shooter extends SubsystemBase {
    * @return the left drive encoder
    */
   public double getLeftEncoder() {
-    return -m_leftEncoder.getVelocity();
+    return m_leftEncoder.getVelocity();
   }
 
   /**
@@ -147,7 +131,7 @@ public class Shooter extends SubsystemBase {
    * @return the right drive encoder
    */
   public double getRightEncoder() {
-    return -m_rightEncoder.getVelocity();
+    return m_rightEncoder.getVelocity();
   }  
 
   @Override

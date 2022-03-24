@@ -52,7 +52,7 @@ public final class Constants {
 
     // Pneumatics
     public static final int kShiftSolenoid = 0;
-    public static final int kShootSolenoid = 3;
+    public static final int kBoltSolenoid = 3;
     public static final int kIntakeSolenoid = 1;
     public static final int kTiltSolenoid = 2;
 
@@ -62,7 +62,7 @@ public final class Constants {
 
     // Shooter Speed
     public static final double kShooterRev = 0.4;
-    public static final double kShooterRPM0 = 7500.0;
+    public static final double kShooterRPM0 = 7800.0;
     public static final double kShooterRPM1 = 5000.0;
     public static final double kFireVelocity0 = 7400.0;
     public static final double kFireVelocity1 = 4900.0;
