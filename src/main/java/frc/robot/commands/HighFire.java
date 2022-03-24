@@ -38,24 +38,22 @@ public class HighFire extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    if (m_shooter.getAvgVelocity() >= m_velocity)  
+      m_shooter.fire();
+      Timer.delay(0.5);
+      m_shooter.load();
+  }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Timer.delay(0.5);
-    m_shooter.fire();
-    Timer.delay(0.5);
-    m_shooter.load();
     m_shooter.stop();  
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (m_shooter.getAvgVelocity() >= m_velocity)
-      return true;
-    else 
-      return false;
+    return false;
   }
 }
