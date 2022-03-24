@@ -108,17 +108,6 @@ public class RobotContainer {
    // System.out.println(m_drivetrain.getLeftEncoder() + ", " + m_drivetrain.getRightEncoder()); //use this to print to console for debug
   }
 
-  public void dashboard() {
-    SmartDashboard.putNumber("Pressure 0", m_ph.getPressure(0));
-    SmartDashboard.putBoolean("Comp", m_ph.getCompressor());
-    //SmartDashboard.putNumber("rEncoder", m_drivetrain.getRightEncoder());
-    //SmartDashboard.putNumber("lEncoder", m_drivetrain.getLeftEncoder());
-    SmartDashboard.putNumber("Average Distance", m_drivetrain.getAverageEncoderDistance());
-    SmartDashboard.putBoolean("High", m_shifting.isHighGear());
-    SmartDashboard.putNumber("Left Shooter", m_shooter.getLeftEncoder());
-    SmartDashboard.putNumber("Right Shooter", m_shooter.getRightEncoder());
-  }
-
   /**
    * Use this method to define your button->command mappings. Buttons can be created by
    * instantiating a {@link GenericHID} or one of its subclasses ({@link

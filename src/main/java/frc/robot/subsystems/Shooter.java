@@ -50,7 +50,7 @@ public class Shooter extends SubsystemBase {
     m_leftMotor.setInverted(true);
     m_rightMotor.follow(m_leftMotor, true);
 
-    // set PID0 coefficients
+    // set PID Slot 0 coefficients
     m_pidController.setP(kP0, 0);
     m_pidController.setI(kI0, 0);
     m_pidController.setD(kD0, 0);
@@ -58,24 +58,14 @@ public class Shooter extends SubsystemBase {
     m_pidController.setFF(kFF0, 0);
     m_pidController.setOutputRange(kMinOutput0, kMaxOutput0, 0);
 
-    // set PID1 coefficients
+    // set PID Slot 1 coefficients
     m_pidController.setP(kP0, 1);
     m_pidController.setI(kI0, 1);
     m_pidController.setD(kD0, 1);
     m_pidController.setIZone(kIz0, 1);
     m_pidController.setFF(kFF0, 1);
     m_pidController.setOutputRange(kMinOutput0, kMaxOutput0, 1);
-
-    /* display PID coefficients on SmartDashboard
-    SmartDashboard.putNumber("P Gain", kP);
-    SmartDashboard.putNumber("I Gain", kI);
-    SmartDashboard.putNumber("D Gain", kD);
-    SmartDashboard.putNumber("I Zone", kIz);
-    SmartDashboard.putNumber("Feed Forward", kFF);
-    SmartDashboard.putNumber("Max Output", kMaxOutput);
-    SmartDashboard.putNumber("Min Output", kMinOutput);
-    */
-      
+    
   }
 
   // Methods to control shooter speed for high goal
@@ -83,11 +73,6 @@ public class Shooter extends SubsystemBase {
     double setPoint = maxRPM0;
     m_pidController.setReference(setPoint, CANSparkMax.ControlType.kVelocity, 0);
     
-    /*
-    SmartDashboard.putNumber("SetPoint", setPoint);
-    SmartDashboard.putNumber("ProcessVariable", m_leftEncoder.getVelocity());
-    SmartDashboard.putNumber("Output", m_leftMotor.getAppliedOutput());
-    */
   }
 
   // Methods to control shooter speed for low goal
@@ -137,8 +122,24 @@ public class Shooter extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    SmartDashboard.putNumber("rEncoder", getRightEncoder());
-    SmartDashboard.putNumber("lEncoder", getLeftEncoder());
+    // Works for sending Dashboard
+    SmartDashboard.putNumber("Right Shooter", getRightEncoder());
+    SmartDashboard.putNumber("Left Shooter", getLeftEncoder());
+    SmartDashboard.putNumber("AvgShotVel", getAvgVelocity());
+    /*
+    SmartDashboard.putNumber("SetPoint", setPoint);
+    SmartDashboard.putNumber("ProcessVariable", m_leftEncoder.getVelocity());
+    SmartDashboard.putNumber("Output", m_leftMotor.getAppliedOutput());
+    */
+    /* display PID coefficients on SmartDashboard
+    SmartDashboard.putNumber("P Gain", kP);
+    SmartDashboard.putNumber("I Gain", kI);
+    SmartDashboard.putNumber("D Gain", kD);
+    SmartDashboard.putNumber("I Zone", kIz);
+    SmartDashboard.putNumber("Feed Forward", kFF);
+    SmartDashboard.putNumber("Max Output", kMaxOutput);
+    SmartDashboard.putNumber("Min Output", kMinOutput);
+    */
   }
 
   @Override
