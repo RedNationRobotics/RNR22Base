@@ -12,7 +12,7 @@ import com.revrobotics.SparkMaxPIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import frc.robot.commands.StopShooter;
+//import frc.robot.commands.StopShooter;
 
 public class Shooter extends SubsystemBase {
   //Shooter Motors
@@ -36,7 +36,7 @@ public class Shooter extends SubsystemBase {
     //Sendables go here
 
     // Default Command
-    this.setDefaultCommand(new StopShooter(this));
+    //this.setDefaultCommand(new StopShooter(this));
     
     // Restore Defaults
     m_leftMotor.restoreFactoryDefaults();
