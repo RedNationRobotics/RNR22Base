@@ -60,6 +60,8 @@ public final class Constants {
     public static final double kMin_PSI = 100.0;
     public static final double kMax_PSI = 120.0;
 
+    public static final double kBoltPulse = 0.3;
+
     // Shooter Speed
     public static final double kShooterRev = 0.4;
     public static final double kShooterRPM0 = 7800.0;

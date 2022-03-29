@@ -21,7 +21,7 @@ public class Bolt extends SubsystemBase {
     //this.setDefaultCommand(StopTilt(this));
     
     // Set fire solenoid pulse duration
-    m_solenoid.setPulseDuration(0.5);
+    m_solenoid.setPulseDuration(Constants.kBoltPulse);
   }
 
   // Methods to control the solenoid
