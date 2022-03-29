@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.PneumaticHub;
 import edu.wpi.first.wpilibj.XboxController;
@@ -102,12 +103,14 @@ public class RobotContainer {
 
   //private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
   private final HighShootNScoot m_autoCommand = new HighShootNScoot(m_drivetrain, m_shooter, m_bolt);
-    
+ 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Add commands to the autonomous command chooser
     m_chooser.setDefaultOption("High Goal Auto", m_highScootNShoot);
     m_chooser.addOption("Low Goal Auto", m_lowScootNShoot);
+
+    CameraServer.startAutomaticCapture();
 
     // Put the chooser on the dashboard
     SmartDashboard.putData(m_chooser);
