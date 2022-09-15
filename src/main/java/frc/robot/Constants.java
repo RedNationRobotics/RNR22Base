@@ -71,10 +71,10 @@ public final class Constants {
 
 
     // Intake Speed
-    public static final double kIntakeSpeed = 0.85;
+    public static final double kIntakeSpeed = -0.85;
 
     // Convey Speed
-    public static final double kConveySpeed = 0.9;
+    public static final double kConveySpeed = -0.9;
 
     // Climb Speed
     public static final double kDeploySpeed = 0.2;
